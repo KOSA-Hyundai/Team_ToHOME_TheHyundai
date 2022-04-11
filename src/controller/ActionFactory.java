@@ -32,6 +32,8 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
+		} else if (command.equals("mypage")) {
+			action = new MyPageAction();
 		}
 		return action;
 	}
