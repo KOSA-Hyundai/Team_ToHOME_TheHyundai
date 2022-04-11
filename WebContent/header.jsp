@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,10 @@
   <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
   
   <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
-  <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script>
+  <!-- <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script>  -->
+  
+  <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
+  <script type="text/javascript" src="js/main/main.min.js"></script>
 </head>
 <body>
 	<div id="wrap" class="main">
@@ -28,7 +32,7 @@
 		    	<div class="toparea">
 		    	
 		    		<!-- //로고 들어가는 곳--->
-		      		<h1><a href="#none"><img src="images/header/header_logo_freex34.png" alt="tohome"></a></h1>
+		      		<h1><a href="HyundaiServlet?command=main"><img src="images/header/header_logo_freex34.png" alt="tohome"></a></h1>
 		      		<!--로고 들어가는 곳//-->
 		      		
 		      		<!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
@@ -80,21 +84,16 @@
 						<div id="p_popCategory" class="popcategory">
 							<nav class="lnb-list">
 								<ul class="lnb">
-									<li class="depth1">
-										<button type="button" onclick="">대분류1</button>
-										<ul class="depth2">
-											<li><a href="#none" onclick="">소분류1</a></li>
-											<li><a href="#none" onclick="">소분류2</a></li>
-											<li><a href="#none" onclick="">소분류3</a></li>
-											<li><a href="#none" onclick="">소분류4</a></li>
-										</ul>
-									</li>
-									<li class="depth1">
-										<button type="button" onclick="">대분류2</button>
-									</li>
-									<li class="depth1">
-										<button type="button" onclick="">대분류3</button>
-									</li>
+									<c:forEach items="${categoryList}"  var="categoryVO">
+										<li class="depth1">
+											<button type="button" onclick="">${categoryVO.bigCategory}</button>
+												<c:forEach items="${categoryVO.smallCategory}"  var="smallCategory" varStatus="status">
+													<ul class="depth2">
+														<li><a href="" onclick="">${smallCategory.index}</a></li>
+													</ul>
+												</c:forEach>
+										</li>
+									</c:forEach>
 								</ul>
 							</nav>
 						</div>  			

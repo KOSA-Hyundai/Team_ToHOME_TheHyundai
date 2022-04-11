@@ -405,6 +405,16 @@ body.fixed {position: fixed;}
 #header .gnbarea .btn-cart:after {content: "";position: absolute;left: 1px;top: 14px;display: inline-block;width: 26px;height: 21px;background: url("../../images/common/btn.png") no-repeat -250px -300px;}
 #header .gnbarea .btn-cart span {position: absolute;top: 0;right: 1px;min-width: 24px;height: 24px;line-height: 24px;color: #fff;font-size: 13px;text-align: center;text-indent:0;font-weight: 700;font-family: "Roboto";background-color: #ff6913;border-radius: 24px;z-index: 1;}
 
+/* contents */
+#contents {position: relative;padding: 44px 0 120px;width: 100%;min-height: calc(100% - 424px);z-index: 10;}
+#header.short ~ #contents {min-height: calc(100% - 360px);}
+#contents > .innercon {position: relative;margin: 0 auto;width: 1204px;}
+#contents > .innerconfull {position: relative;width: 100%;}
+#contents h2 {color: #101010;font-size: 32px;font-weight: 600;}
+#contents .lnbarea + .conarea {float: left;width: 960px;}
+#contents .lnbarea + .conarea > h3.tit {padding: 3px 0 23px;color: #101010;font-size: 24px;font-weight: 200;}
+#contents .lnbarea + .conarea > h3.tit.line {border-bottom: 2px solid #767572;}
+
 /* footer */
 #footer {position: relative;width: 100%;min-height: 300px;background-color: #101010;z-index: 10;}
 #footer .inner {position: relative;margin: 0 auto;width: 1204px;}
