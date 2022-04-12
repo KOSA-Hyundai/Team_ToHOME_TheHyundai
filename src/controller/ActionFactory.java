@@ -3,7 +3,7 @@ package controller;
 import controller.action.*;
 
 public class ActionFactory {
-
+  
     private static ActionFactory instance = new ActionFactory();
 
     private ActionFactory() {
@@ -38,8 +38,9 @@ public class ActionFactory {
             action = new UpdateAction();
         } else if (command.equals("updateMember")) {
             action = new UpdateMemberAction();
-        }
+        } else if (command.equals("product_list")) {
+	        action = new ProductListAction();
+	      }
         return action;
     }
-
 }

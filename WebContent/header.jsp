@@ -1,34 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"/>
     <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css"/>
-    <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
-    <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
-
     <link rel="stylesheet" type="text/css" href="css/main/common.min.css"/>
+  	<link rel="stylesheet" type="text/css" href="css/productList/css-library.min.css?after">
+  	<link rel="stylesheet" type="text/css" href="css/productList/common.min.css?after">
+  	<link rel="stylesheet" type="text/css" href="css/productList/product.min.css?after">
+  	<link rel="stylesheet" type="text/css" href="css/productList/event.min.css?after">
+  	<script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
+    <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
+  	<script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script>
 </head>
 <body>
-<div id="wrap" class="main">
-    <!--헤더파일 들어가는 곳 시작 -->
-    <header id="header">
-        <div id="topBanner"></div>
-
-        <!-- //상단배너 -->
-        <div class="inner">
-            <!-- //toparea -->
-            <div class="toparea">
-                <!-- //로고 들어가는 곳--->
-                <h1>
-                    <a href="HyundaiServlet?command=main"><img src="images/header/header_logo_freex34.png"
-                                                               alt="tohome"/></a>
-                </h1>
-                <!--로고 들어가는 곳//-->
+	<div id="wrap" class="main">
+    	<!--헤더파일 들어가는 곳 시작 -->
+        <header id="header">
+        	<div id="topBanner"></div>
+                <!-- //상단배너 -->
+                <div class="inner">  
+                    <!-- //toparea -->
+                    <div class="toparea">
+                        <!-- //로고 들어가는 곳--->
+                        <h1>
+                            <a href="HyundaiServlet?command=main"><img src="images/header/header_logo_freex34.png" alt="tohome" /></a>
+                        </h1>
+                        <!--로고 들어가는 곳//-->
 
                 <!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
                 <div class="util" id="dawnLoginN" style="display: hidden;">
@@ -68,7 +63,6 @@
                                     $(this).parents("ul.lnb").removeClass("on");
                                 }
                             );
-
                             $(".exhibition-wrap, .brand-ct").hover(
                                 function () {
                                     $(this).parents("ul.lnb").addClass("on2");
@@ -83,28 +77,22 @@
                     <button type="button" class="btn-category">카테고리 전체보기</button>
                     <div id="p_popCategory" class="popcategory">
                         <nav class="lnb-list">
-                            <ul class="lnb">
-                                <li class="depth1">
-                                    <button type="button" onclick="">대분류1</button>
-                                    <ul class="depth2">
-                                        <li><a href="#none" onclick="">소분류1</a></li>
-                                        <li><a href="#none" onclick="">소분류2</a></li>
-                                        <li><a href="#none" onclick="">소분류3</a></li>
-                                        <li><a href="#none" onclick="">소분류4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="depth1">
-                                    <button type="button" onclick="">대분류2</button>
-                                </li>
-                                <li class="depth1">
-                                    <button type="button" onclick="">대분류3</button>
-                                </li>
-                            </ul>
-                        </nav>
+									        <ul class="lnb">
+										        <c:forEach items="${categoryList}" var="categoryVO" varStatus="status">
+											        <li class="depth1">
+												        <button type="button" onclick="">${categoryVO.bigCategory}</button>													
+                                  <ul class="depth2">
+                                    <c:forEach items="${categoryVO.smallCategory}"  var="smallCategory">
+															        <li><a href="" onclick="">${smallCategory}</a></li>
+														        </c:forEach>
+													        </ul>
+											        </li>
+										        </c:forEach>
+									        </ul>
+								        </nav>
                     </div>
                 </div>
                 <!-- 카테고리// -->
-
                 <!-- //gnb-list -->
                 <ul class="gnb-list" id="homeGnbList">
                     <li><a class href="#none">베스트</a></li>
