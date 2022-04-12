@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ include file="../header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../header.jsp" %>
 <title>회원 가입>일반 회원가입</title>
 <style>
     .container {
@@ -16,6 +17,7 @@
         font-size: 15px;
         color: black;
     }
+
     h1 {
         color: black !important;
     }
@@ -55,10 +57,12 @@
         }
         return true;
     }
+
     function resetID() {
         initIdCheck = false;
         fn.inputMsgClear("#email");
     }
+
     function not_yet() {
         alert("준비중인 서비스입니다.");
     }
@@ -72,16 +76,21 @@
                     <div class="linearea" style="margin-top: 40px; text-align: left;">
                         <section class="totalmember" style="margin-left: 60px; margin-right: 60px;">
                             <h1>가입정보를 입력해 주세요.</h1>
-                            <form id="join" method="post" name="formm" onsubmit="return go_save();" action="HyundaiServlet?command=join">
+                            <form id="join" method="post" name="formm" onsubmit="return go_save();"
+                                  action="HyundaiServlet?command=join">
                                 <fieldset style="width: 560px; margin-top: 40px;">
                                     <strong>회원정보</strong> <small><span class="need">*</span> 필수입력사항</small>
                                     <div style="border-top: 1px solid black; margin-bottom: 30px;"></div>
                                     <ul>
                                         <li>
                                             <label class="form-entry inline">
-                                                <span class="info">이메일</span><span class="need">*<span class="hide">필수</span></span><br />
-                                                <input type="text" class="big" id="email" name="email" title="아이디" placeholder="아이디" style="width: 460px;" onkeydown="resetID();" />
-                                                <button type="button" class="btn fill big gray" onclick="not_yet();">인증하기</button>
+                                                <span class="info">이메일</span><span class="need">*<span
+                                                    class="hide">필수</span></span><br/>
+                                                <input type="text" class="big" id="email" name="email" title="아이디"
+                                                       placeholder="아이디" style="width: 460px;" onkeydown="resetID();"/>
+                                                <button type="button" class="btn fill big gray" onclick="not_yet();">
+                                                    인증하기
+                                                </button>
                                                 <button type="button" class="btn-del">삭제</button>
                                             </label>
                                             <div class="infotxt" style="margin-bottom: 30px;">
@@ -92,8 +101,10 @@
                                         </li>
                                         <li>
                                             <label class="form-entry">
-                                                <span class="info">비밀번호</span><span class="need">*<span class="hide">필수</span></span>
-                                                <input type="password" class="big" name="pw" id="pw" title="비밀번호 입력" placeholder="비밀번호" />
+                                                <span class="info">비밀번호</span><span class="need">*<span
+                                                    class="hide">필수</span></span>
+                                                <input type="password" class="big" name="pw" id="pw" title="비밀번호 입력"
+                                                       placeholder="비밀번호"/>
                                                 <button type="button" class="btn-del">삭제</button>
                                             </label>
                                             <div class="infotxt" style="margin-bottom: 20px;">
@@ -105,7 +116,8 @@
                                         </li>
                                         <li class="pw">
                                             <label class="form-entry">
-                                                <input type="password" class="big" name="pw2" id="pwCheck" title="비밀번호 확인 입력" placeholder="비밀번호 확인" />
+                                                <input type="password" class="big" name="pw2" id="pwCheck"
+                                                       title="비밀번호 확인 입력" placeholder="비밀번호 확인"/>
                                                 <button type="button" class="btn-del">삭제</button>
                                             </label>
                                             <div class="infotxt" style="margin-bottom: 30px;">
@@ -118,26 +130,33 @@
                                             <div class="form-birth" style="margin-bottom: 30px;">
                                                 <label class="form-entry">
                                                     <span class="info">이름</span><span class="need">*<span class="hide">필수</span></span>
-                                                    <input type="text" name="name" class="big" title="이름" placeholder="이름" style="margin-bottom: 20px;" />
+                                                    <input type="text" name="name" class="big" title="이름"
+                                                           placeholder="이름" style="margin-bottom: 20px;"/>
                                                 </label>
 
                                                 <label class="form-entry">
-                                                    <span class="info">전화번호</span><span class="need">*<span class="hide">필수</span></span><input type="text" name="phone_number" />
+                                                    <span class="info">전화번호</span><span class="need">*<span
+                                                        class="hide">필수</span></span><input type="text"
+                                                                                            name="phone_number"/>
                                                 </label>
                                                 <div class="infotxt" style="margin-bottom: 30px;">
-                                                <ul>
-                                                    <li>'-'를 제외하고 입력해주세요.</li>
-                                                </ul>
-                                            </div>
+                                                    <ul>
+                                                        <li>'-'를 제외하고 입력해주세요.</li>
+                                                    </ul>
+                                                </div>
 
-                                                <label class="form-entry"> <span class="info">생년월일 및 성별</span><input type="number" name="birth" class="big" title="생년월일" placeholder="생년월일" value="" /> </label>
+                                                <label class="form-entry"> <span class="info">생년월일 및 성별</span><input
+                                                        type="number" name="birth" class="big" title="생년월일"
+                                                        placeholder="생년월일" value=""/> </label>
 
                                                 <div class="infotxt">
                                                     <ul>
                                                         <li>8자리 숫자만 입력 (예. 20190715)</li>
                                                     </ul>
                                                 </div>
-                                                <div class="gender"><input type="radio" name="gender" value="F" />&nbsp;여성 <input type="radio" name="gender" value="M" />&nbsp;남성</div>
+                                                <div class="gender"><input type="radio" name="gender" value="F"/>&nbsp;여성
+                                                    <input type="radio" name="gender" value="M"/>&nbsp;남성
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
@@ -145,17 +164,23 @@
                                                 <span class="info">주소</span>
                                                 <!-- <input type="text" name="RDNM_POST_NO" class="big post" title="우편번호" placeholder="우편번호" readonly> -->
                                                 <!--  <button type="button" class="btn fill big gray" onclick="javascript:showSearchAddressPop('pc');">주소찾기</button> -->
-                                                <input type="text" name="address" class="big" title="기본주소" placeholder="기본주소" />
+                                                <input type="text" name="address" class="big" title="기본주소"
+                                                       placeholder="기본주소"/>
                                                 <!-- <label class="form-entry">
                                           <input type="text" id="RDNM_PTC_ADR"   name="RDNM_PTC_ADR" class="big" title="상세주소 입력" placeholder="상세주소 입력"><button type="button" class="btn-del">삭제</button>
                                           </label> -->
-                                                <label><input type="checkbox" name="ADD_DSTN" class="big" id="ADD_DSTN" value="Y" disabled /><span class="info">배송지 목록에 추가</span></label>
+                                                <label><input type="checkbox" name="ADD_DSTN" class="big" id="ADD_DSTN"
+                                                              value="Y" disabled/><span
+                                                        class="info">배송지 목록에 추가</span></label>
                                             </div>
                                         </li>
                                     </ul>
                                 </fieldset>
                                 <div class="btns" style="margin-bottom: 60px;">
-                                    <button type="button" class="btn big black" onclick="location.href='HyundaiServlet?command=joinStep1'" style="width: 275px;">취소</button>
+                                    <button type="button" class="btn big black"
+                                            onclick="location.href='HyundaiServlet?command=joinStep1'"
+                                            style="width: 275px;">취소
+                                    </button>
                                     <button type="submit" class="btn fill big black" style="width: 275px;">가입하기</button>
                                 </div>
                             </form>
@@ -166,4 +191,4 @@
         </div>
     </div>
 </div>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../footer.jsp" %>

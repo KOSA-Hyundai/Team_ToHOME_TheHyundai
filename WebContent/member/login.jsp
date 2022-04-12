@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ include file="../header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../header.jsp" %>
 
 <title>로그인</title>
 <script type="text/javascript">
@@ -59,6 +60,7 @@
             }
         }
     }
+
     function not_yet() {
         alert("준비중인 서비스입니다.");
     }
@@ -79,23 +81,35 @@
                     <legend class="hide">로그인</legend>
                     <ul>
                         <li>
-                            <label class="form-entry"> <input type="text" id="email" name="email" class="big" title="아이디 입력" placeholder="아이디" value="${email}" style="width: 440px; margin-top: 30px;" /> </label>
+                            <label class="form-entry"> <input type="text" id="email" name="email" class="big"
+                                                              title="아이디 입력" placeholder="아이디" value="${email}"
+                                                              style="width: 440px; margin-top: 30px;"/> </label>
                         </li>
                         <li>
-                            <label class="form-entry"> <input type="password" id="pw" name="pw" class="big" title="비밀번호 입력" placeholder="비밀번호" value="" style="width: 440px; margin-top: 10px;" /> </label>
+                            <label class="form-entry"> <input type="password" id="pw" name="pw" class="big"
+                                                              title="비밀번호 입력" placeholder="비밀번호" value=""
+                                                              style="width: 440px; margin-top: 10px;"/> </label>
                         </li>
                     </ul>
-                    <label class="form-save" style="text-align: left;"><input type="checkbox" id="saveId" name="saveId" class="big" /><span>아이디저장</span></label>
+                    <label class="form-save" style="text-align: left;"><input type="checkbox" id="saveId" name="saveId"
+                                                                              class="big"/><span>아이디저장</span></label>
                     <ul class="btn-group login-surport">
                         <li><a href="HyundaiServlet?command=joinStep1">회원가입</a></li>
                         <li><a onclick="not_yet()">아이디/비밀번호 찾기</a></li>
                     </ul>
-                    <button type="submit" class="btn fill big black" id="loginbtn" style="width: 440px; margin-top: 30px;">로그인</button><br />
-                    <button type="button" class="btn black big btn-kakao" id="kakaoLoginBtn" onclick="not_yet()" style="width: 440px; margin-top: 10px;">카카오 로그인</button>
+                    <button type="submit" class="btn fill big black" id="loginbtn"
+                            style="width: 440px; margin-top: 30px;">로그인
+                    </button>
+                    <br/>
+                    <button type="button" class="btn black big btn-kakao" id="kakaoLoginBtn" onclick="not_yet()"
+                            style="width: 440px; margin-top: 10px;">카카오 로그인
+                    </button>
                 </fieldset>
             </form>
-            <button type="button" class="btn fill middle lightgray" onclick="not_yet()" style="width: 440px; margin-top: 10px;">비회원 주문조회</button>
+            <button type="button" class="btn fill middle lightgray" onclick="not_yet()"
+                    style="width: 440px; margin-top: 10px;">비회원 주문조회
+            </button>
         </div>
     </div>
 </article>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../footer.jsp" %>
