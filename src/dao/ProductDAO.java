@@ -19,7 +19,7 @@ public class ProductDAO {
 	// 메인 페이지 상품 리스트 출력하는 기능
 	public ArrayList<ProductVO> productList(int id){
 		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-		String sql = "select * from table(product_list_package.fn_get_prod(?))";
+		String sql = "select * from table(product_list_package.fn_main_prod(?))";
 		Connection conn = null;
 		CallableStatement csmt = null;
 		ResultSet rs = null;
@@ -33,8 +33,8 @@ public class ProductDAO {
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
 				product.setId(rs.getInt("id"));
-				product.setProdName(rs.getString("prod_name"));
-				product.setProdCategory(rs.getInt("prod_category"));
+				product.setProdCategory(rs.getInt("prod_category"));;
+				product.setProdName(rs.getString("prod_name"));	
 				product.setProdDetail(rs.getString("prod_detail"));
 				product.setPrice(rs.getInt("price"));
 				product.setDiscount(rs.getInt("discount"));

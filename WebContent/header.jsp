@@ -17,10 +17,12 @@
  -->
   <link rel="stylesheet" type="text/css" href="css/productList/css-library.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/productList/common.min.css?after">
+  <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
   <link rel="stylesheet" type="text/css" href="css/productList/product.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/productList/event.min.css?after">
-
-  <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script>
+  <!-- <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script> -->
+  <script type="text/javascript" src="js/main/main.min.js"></script>
+  <script type="text/javascript" src="js/main/GoogleAnalyticsBuilder.js?ver=16"></script>
 </head>
 <body>
 	<div id="wrap" class="main">
