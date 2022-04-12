@@ -8,13 +8,13 @@
   <meta charset="UTF-8">
   <title>새벽투홈</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico">
-<!--   <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css">
- -->
+  <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css">
+
   <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
   <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
   
-<!--   <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
- -->
+  <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
+
   <link rel="stylesheet" type="text/css" href="css/productList/css-library.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/productList/common.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
@@ -57,6 +57,8 @@
                             </c:choose>
                             <a href="HyundaiServlet?command=mypage">마이페이지</a>
                             <a href="#none">고객센터</a>
+                            
+                            
                         </div>
                         <!-- 로그인, 회원가입, 마이페이지, 고객센터// -->
 
@@ -125,28 +127,25 @@
 
                         <!-- //searcharea -->
                         <div class="searcharea">
-                            <form name="pdPcSearchForm" id="pdPcSearchForm" method="post">
+                            <form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="HyundaiServlet?command=product_search">
                                 <fieldset>
                                     <legend class="hide">검색어 입력</legend>
 
                                     <div class="form-entry exist search">
                                         <input
                                             type="text"
-                                            name="keyWord"
-                                            title="검색어 입력"
+                                            name="productName"
+                                            id="productName"
+                                            title="상품명 입력"
                                             onfocus="fn.addClass('.searcharea');$('.defaultsearch').fadeIn();"
                                             oninput="handleOnInput(this, 20);"
                                             autocomplete="off"
                                             onkeyup="fnPDSearchAutoSelect(this, event);"
+                                            required
                                         />
                                         <!-- <button type="button" class="btn-del" tabindex="-1">삭제</button> -->
-                                        <button type="button" class="btn-search" onclick="GA_Event('PC_공통', '헤더', '검색'); fnPDSearchSubmit();">검색</button>
+                                        <button type="submit" class="btn-search">검색</button>
                                     </div>
-                                    <input type="text" name="searchTerm" class="hide" />
-                                    <input type="text" name="category" class="hide" />
-                                    <input type="text" name="pageNumber" class="hide" />
-                                    <input type="text" name="rowsPerPage" class="hide" />
-                                    <input type="text" name="tagNm" class="hide" />
                                 </fieldset>
                             </form>
                         </div>

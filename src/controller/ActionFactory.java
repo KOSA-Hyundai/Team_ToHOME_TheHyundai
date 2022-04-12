@@ -34,7 +34,10 @@ public class ActionFactory {
 			action = new LogoutAction();
 		} else if (command.equals("product_list")) {
 	        action = new ProductListAction();
+	    } else if (command.equals("product_search")) {
+	    	action = new ProductSearchAction();
 	    }
+		
 		return action;
 	}
 
