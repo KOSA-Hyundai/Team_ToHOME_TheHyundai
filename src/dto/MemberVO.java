@@ -1,7 +1,5 @@
 package dto;
 
-import java.sql.Timestamp;
-
 public class MemberVO {
 	private String email;
 	private String name;

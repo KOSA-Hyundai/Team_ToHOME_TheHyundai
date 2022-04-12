@@ -442,3 +442,24 @@ body.fixed {position: fixed;}
 #footer .btn-top:after {content: "";position: absolute;top: 10px;left: 50%;margin-left: -6px;display: block;width: 12px;height: 14px;background: url("../../images/common/btn.png") no-repeat -150px -300px;}
 #footer .btn-top.scroll {display: block;}
 #footer .info .essential-info em {color: #aea7a2;margin-bottom: 15px;}
+
+
+#wrap .lnbarea {float: left;width: 244px;}
+#wrap .lnbarea h2 {margin-bottom: 6px;}
+#wrap .lnbarea .lnb-depth1 {padding-top: 28px;}
+#wrap .lnbarea .lnb-depth1 > a {display: block;line-height: 24px;color: #101010;font-size: 18px;font-weight: 600;}
+#wrap .lnbarea .lnb-depth2 {margin-top: 6px;}
+#wrap .lnbarea .lnb-depth2 li {display: block;line-height: 28px;}
+#wrap .lnbarea .lnb-depth2 li a {display: inline-block;color: #767572;}
+#wrap .lnbarea .lnb-depth2 li.active a,
+#wrap .lnbarea .lnb-depth2 li a:hover {color: #ff6913;}
+
+#contents {position: relative;padding: 44px 0 120px;width: 100%;min-height: calc(100% - 424px);z-index: 10;}
+#header.short ~ #contents {min-height: calc(100% - 360px);}
+#contents > .innercon {position: relative;margin: 0 auto;width: 1204px;}
+#contents > .innerconfull {position: relative;width: 100%;}
+#contents h2 {color: #101010;font-size: 32px;font-weight: 600;}
+#contents .lnbarea + .conarea {float: left;width: 960px;}
+#contents .lnbarea + .conarea > h3.tit {padding: 3px 0 23px;color: #101010;font-size: 24px;font-weight: 200;}
+#contents .lnbarea + .conarea > h3.tit.line {border-bottom: 2px solid #767572;}
+

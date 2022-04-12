@@ -70,7 +70,6 @@ public class MemberDAO {
 				Object[] attrs = null;
 				Struct bean = (Struct) objArr[i];
 				attrs = bean.getAttributes();
-
 				
 				List<Object> arr = Arrays.asList(attrs);
 				memberVO.setEmail(String.valueOf(arr.get(0)));
@@ -90,5 +89,27 @@ public class MemberDAO {
 			DBManager.close(conn, ctmt, rs);
 		}
 		return memberVO;
+	}
+	
+	public void updateMember(MemberVO memberVO) {
+
+		String runSP = "call MEMBER_PACKAGE.MEMBER_UPDATE(?, ?, ?, ?)";
+
+		try {
+			Connection conn = DBManager.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(runSP);
+			callableStatement.setString(1, memberVO.getEmail());
+			callableStatement.setString(2, memberVO.getPw());
+			callableStatement.setString(3, memberVO.getPhone_number());
+			callableStatement.setString(4, memberVO.getAddress());
+
+			callableStatement.executeUpdate();
+			System.out.println("¼º°ø");
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
