@@ -53,7 +53,7 @@ public class ProductListDAO {
    		    	  ProductVO product = new ProductVO();		        	
 
    		    	  List<Object> arr = Arrays.asList(attrs);
-//   		    	  System.out.println(arr);
+   		    	  System.out.println(arr);
    		    	  product.setId(Integer.parseInt(arr.get(0).toString()));
    		    	  product.setProdCategory(Integer.parseInt(arr.get(1).toString()));
    		    	  product.setProdName(String.valueOf(arr.get(2)));
@@ -62,7 +62,7 @@ public class ProductListDAO {
    		    	  product.setDiscount(Integer.parseInt(arr.get(5).toString()));
    		    	  product.setPackageType(String.valueOf(arr.get(6)));
 		          product.setOrigin(String.valueOf(arr.get(7)));
-		          product.setProdImage(String.valueOf(arr.get(8)));
+		          product.setProdImg(String.valueOf(arr.get(8)));
 		          productList.add(product);
   	          }
 		      		      

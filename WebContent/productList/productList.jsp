@@ -10,9 +10,9 @@
 			<div class="innercon">
 				<section class="categorylist">
 		            <div class="depth">
-		                <h2>${대분류 항목 값 가져오기 }</h2>
+		                <h2>대분류 항목 값 가져오기</h2>
 		                <div class="path">
-                        	홈<img src="images/common/path_arrow.png" alt="">${소분류 항목 가져오기 }     
+                        	홈<img src="images/common/path_arrow.png" alt="">소분류 항목 가져오기     
 				        </div>
 	                </div>   
 
