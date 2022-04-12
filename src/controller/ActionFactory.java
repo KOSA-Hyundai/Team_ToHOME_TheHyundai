@@ -34,8 +34,10 @@ public class ActionFactory {
 			action = new LogoutAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
-		} else if (command.equals("updateMember")) {
+		} else if (command.equals("update")) {
 			action = new UpdateAction();
+		} else if (command.equals("updateMember")) {
+			action = new UpdateMemberAction();
 		}
 		return action;
 	}

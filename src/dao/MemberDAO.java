@@ -26,10 +26,12 @@ public class MemberDAO {
 	public void insertMember(MemberVO memberVO) {
 
 		String runSP = "call MEMBER_PACKAGE.MEMBER_JOIN(?, ?, ?, ?, ?, ?, ?)";
-
+		Connection conn = null;
+		CallableStatement callableStatement = null;
+		
 		try {
-			Connection conn = DBManager.getConnection();
-			CallableStatement callableStatement = conn.prepareCall(runSP);
+			conn = DBManager.getConnection();
+			callableStatement = conn.prepareCall(runSP);
 			callableStatement.setString(1, memberVO.getEmail());
 			callableStatement.setString(2, memberVO.getName());
 			callableStatement.setString(3, memberVO.getPw());
@@ -45,6 +47,8 @@ public class MemberDAO {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, callableStatement);
 		}
 	}
 
@@ -94,22 +98,27 @@ public class MemberDAO {
 	public void updateMember(MemberVO memberVO) {
 
 		String runSP = "call MEMBER_PACKAGE.MEMBER_UPDATE(?, ?, ?, ?)";
-
+		Connection conn = null;
+		CallableStatement ctmt = null;;
+		
 		try {
-			Connection conn = DBManager.getConnection();
-			CallableStatement callableStatement = conn.prepareCall(runSP);
-			callableStatement.setString(1, memberVO.getEmail());
-			callableStatement.setString(2, memberVO.getPw());
-			callableStatement.setString(3, memberVO.getPhone_number());
-			callableStatement.setString(4, memberVO.getAddress());
-
-			callableStatement.executeUpdate();
+			conn = DBManager.getConnection();
+			ctmt = conn.prepareCall(runSP);
+			ctmt.setString(1, memberVO.getEmail());
+			ctmt.setString(2, memberVO.getPw());
+			ctmt.setString(3, memberVO.getPhone_number());
+			ctmt.setString(4, memberVO.getAddress());
+			
+			System.out.println();
+			ctmt.executeUpdate();
 			System.out.println("¼º°ø");
 		} catch (SQLException e) {
 			System.err.format("SQL State: %s\\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} finally {
+			DBManager.close(conn, ctmt);
+		} 
 	}
 }

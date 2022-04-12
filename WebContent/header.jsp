@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="css/member/mypage.min.css" />
         <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css" />
         <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
         <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
@@ -36,7 +37,7 @@
                                 <c:otherwise>
                                     <a style="color: gray;">${sessionScope.loginUser.name}님! 반갑습니다.</a>
                                     <a href="HyundaiServlet?command=logout" style="color: black;">로그아웃</a>
-                                    <a href="#">회원정보변경</a>
+                                    <a href="HyundaiServlet?command=updateMember">회원정보변경</a>
                                 </c:otherwise>
                             </c:choose>
                             <a href="HyundaiServlet?command=mypage">마이페이지</a>
@@ -150,6 +151,3 @@
                 <!-- 상단배너// -->
             </header>
             <!--헤더파일 들어가는 곳 끝 -->
-        </div>
-    </body>
-</html>

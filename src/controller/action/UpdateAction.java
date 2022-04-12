@@ -13,17 +13,18 @@ public class UpdateAction implements Action {
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 	  
-    String url = "member/updateMember.jsp";     
+    String url = "member/mypage.jsp";     
     HttpSession session = request.getSession();    
-    MemberVO memberVO = new MemberVO();    
+    MemberVO memberVO = (MemberVO) session.getAttribute("loginUser");    
     memberVO.setEmail(request.getParameter("email"));
-    memberVO.setPw(request.getParameter("pw"));
+    if(request.getParameter("pw")!="") {
+    	memberVO.setPw(request.getParameter("pw"));
+    }
     memberVO.setPhone_number(request.getParameter("phone_number"));
     memberVO.setAddress(request.getParameter("address"));
  
-    
     //memberVO.setAddress(request.getParameter("addr1") + request.getParameter("addr2"));  
-    
+    session.setAttribute("loginUser", memberVO);
     session.setAttribute("email", request.getParameter("email"));    
     
     MemberDAO memberDAO = MemberDAO.getInstance();

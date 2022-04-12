@@ -463,3 +463,6 @@ body.fixed {position: fixed;}
 #contents .lnbarea + .conarea > h3.tit {padding: 3px 0 23px;color: #101010;font-size: 24px;font-weight: 200;}
 #contents .lnbarea + .conarea > h3.tit.line {border-bottom: 2px solid #767572;}
 
+.nodata {position: relative;color: #767572;text-align: center;}
+.nodata:before {content: "";display: block;margin: 0 auto 15px;width: 80px;height: 80px;background: url("../../images/common/icon.png") no-repeat -400px 0;}
+.txt-nodata {padding: 40px 15px 60px;color: #aea7a2;font-size: 15px;text-align: center;}
