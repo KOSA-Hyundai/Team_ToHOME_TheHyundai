@@ -1,4 +1,4 @@
-package vo;
+package dto;
 
 import java.util.Arrays;
 

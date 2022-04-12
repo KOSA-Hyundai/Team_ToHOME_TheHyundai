@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import utill.DBManager;
-import vo.CategoryVO;
+import dto.CategoryVO;
 
 public class CategoryDAO {
 	private CategoryDAO() {}
@@ -32,9 +32,6 @@ public class CategoryDAO {
 			    category.setBigCategory(rs.getString("prod_big_category"));
 			    	
 			    String[] smallCategory = rs.getString("prod_small_category").split(",");
-			    	
-			    for(int i = 0; i < smallCategory.length; i++)
-			    	System.out.println(smallCategory[i]);
 			    	
 			    category.setSmallCategory(smallCategory);
 			    	

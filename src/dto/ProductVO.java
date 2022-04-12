@@ -1,4 +1,4 @@
-package vo;
+package dto;
 
 public class ProductVO {
 	private int id;
@@ -64,5 +64,12 @@ public class ProductVO {
 	}
 	public void setProdImg(String prodImg) {
 		this.prodImg = prodImg;
+	}
+	
+	@Override
+	public String toString() {
+		return "ProductVO [id=" + id + ", prodCategory=" + prodCategory + ", prodName=" + prodName + ", prodDetail="
+				+ prodDetail + ", price=" + price + ", discount=" + discount + ", packageType=" + packageType
+				+ ", origin=" + origin + ", prodImg=" + prodImg + "]";
 	}
 }
