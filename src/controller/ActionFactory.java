@@ -32,7 +32,9 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
-		}
+		} else if (command.equals("product_list")) {
+	        action = new ProductListAction();
+	    }
 		return action;
 	}
 
