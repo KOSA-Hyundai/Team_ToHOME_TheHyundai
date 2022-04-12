@@ -109,7 +109,6 @@ public class MemberDAO {
 			ctmt.setString(3, memberVO.getPhone_number());
 			ctmt.setString(4, memberVO.getAddress());
 			
-			System.out.println();
 			ctmt.executeUpdate();
 			System.out.println("¼º°ø");
 		} catch (SQLException e) {
