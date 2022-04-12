@@ -11,27 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 import controller.action.Action;
 
 @WebServlet("/HyundaiServlet")
-public class HyundaiServlet extends HttpServlet{
-
-
+public class HyundaiServlet extends HttpServlet {
+  
 	  private static final long serialVersionUID = 1L;
 
-	  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String command = request.getParameter("command");
-	    System.out.println("HyundaiServlet : " + command);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String command = request.getParameter("command");
+        System.out.println("HyundaiServlet : " + command);
 
-	    ActionFactory af = ActionFactory.getInstance();
-	    Action action = af.getAction(command);
+        ActionFactory af = ActionFactory.getInstance();
+        Action action = af.getAction(command);
 
-	    if (action != null) {
-	      action.execute(request, response);
-	    }
-	  }
+        if (action != null) {
+            action.execute(request, response);
+        }
+    }
 
-	  protected void doPost(HttpServletRequest request,
-	      HttpServletResponse response) throws ServletException, IOException {
-	    request.setCharacterEncoding("UTF-8");
-	    doGet(request, response);
-	  }
-	
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        doGet(request, response);
+    }
+
 }

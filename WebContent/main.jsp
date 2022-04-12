@@ -167,4 +167,4 @@
 	</section>
 	<!-- 상품 미리보기 2// -->	
 </div>
-<%@ include file="../footer.jsp" %>  
+<%@ include file="../footer.jsp" %> 
