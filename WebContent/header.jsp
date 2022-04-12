@@ -1,23 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css" />
-        <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
-        <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
-
-        <link rel="stylesheet" type="text/css" href="css/main/common.min.css" />
-    </head>
-    <body>
-        <div id="wrap" class="main">
-            <!--헤더파일 들어가는 곳 시작 -->
-            <header id="header">
-                <div id="topBanner"></div>
+<head>
+  <meta charset="UTF-8">
+  <title>새벽투홈</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css">
+  <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
+  <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
+  <!-- <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script> -->
+  
+  <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
+  <script type="text/javascript" src="js/main/main.min.js"></script>
+</head>
+<body>
+	<div id="wrap" class="main">
+    	<!--헤더파일 들어가는 곳 시작 -->
+        <header id="header">
+            
+        	<div id="topBanner"></div>
 
                 <!-- //상단배너 -->
                 <div class="inner">
+                
                     <!-- //toparea -->
                     <div class="toparea">
                         <!-- //로고 들어가는 곳--->
@@ -78,25 +88,20 @@
                             <!-- //카테고리 -->
                             <button type="button" class="btn-category">카테고리 전체보기</button>
                             <div id="p_popCategory" class="popcategory">
-                                <nav class="lnb-list">
-                                    <ul class="lnb">
-                                        <li class="depth1">
-                                            <button type="button" onclick="">대분류1</button>
-                                            <ul class="depth2">
-                                                <li><a href="#none" onclick="">소분류1</a></li>
-                                                <li><a href="#none" onclick="">소분류2</a></li>
-                                                <li><a href="#none" onclick="">소분류3</a></li>
-                                                <li><a href="#none" onclick="">소분류4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="depth1">
-                                            <button type="button" onclick="">대분류2</button>
-                                        </li>
-                                        <li class="depth1">
-                                            <button type="button" onclick="">대분류3</button>
-                                        </li>
-                                    </ul>
-                                </nav>
+								<nav class="lnb-list">
+									<ul class="lnb">
+										<c:forEach items="${categoryList}" var="categoryVO" varStatus="status">
+											<li class="depth1">
+												<button type="button" onclick="">${categoryVO.bigCategory}</button>													
+													<ul class="depth2">
+														<c:forEach items="${categoryVO.smallCategory}"  var="smallCategory">
+															<li><a href="" onclick="">${smallCategory}</a></li>
+														</c:forEach>
+													</ul>
+											</li>
+										</c:forEach>
+									</ul>
+								</nav>
                             </div>
                         </div>
                         <!-- 카테고리// -->
@@ -150,6 +155,3 @@
                 <!-- 상단배너// -->
             </header>
             <!--헤더파일 들어가는 곳 끝 -->
-        </div>
-    </body>
-</html>
