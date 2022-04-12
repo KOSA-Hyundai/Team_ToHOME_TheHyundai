@@ -29,6 +29,8 @@ public class UpdateAction implements Action {
 		String pwd = null;
 
 		memberVO.setEmail(request.getParameter("email"));
+		memberVO.setPhone_number(request.getParameter("phone_number"));
+		memberVO.setAddress(request.getParameter("address"));
 		if (request.getParameter("pw") != "") {
 			try {
 				pwd = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(request.getParameter("pw"));
@@ -38,13 +40,12 @@ public class UpdateAction implements Action {
 				e.printStackTrace();
 			}
 			memberVO.setPw(pwd);
+			session.setAttribute("loginUser", memberVO);
 		}
-		memberVO.setPhone_number(request.getParameter("phone_number"));
-		memberVO.setAddress(request.getParameter("address"));
-
+		
 		// memberVO.setAddress(request.getParameter("addr1") +
 		// request.getParameter("addr2"));
-		session.setAttribute("loginUser", memberVO);
+		
 		session.setAttribute("email", request.getParameter("email"));
 
 		MemberDAO memberDAO = MemberDAO.getInstance();
