@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -12,7 +13,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.CartDAO;
 import dao.MemberDAO;
+import dto.CartVO;
 import dto.MemberVO;
 import utill.AES128;
 import utill.Secret;
@@ -39,6 +43,11 @@ public class LoginAction implements Action {
 			if (memberVO.getPw().equals(pwd)) { // 암호 확인
 				session.removeAttribute("email");
 				session.setAttribute("loginUser", memberVO);
+				CartDAO cartDAO = CartDAO.getInstance();
+				MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+				ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getEmail());
+				int cartCount = cartList.size();
+				session.setAttribute("cartCount", cartCount);
 				url = "HyundaiServlet?command=main"; // 시작 페이지로
 			}
 		}

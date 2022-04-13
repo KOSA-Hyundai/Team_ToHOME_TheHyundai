@@ -140,7 +140,15 @@
                 <button type="button" class="btn-cart"
                         onclick="location.href='HyundaiServlet?command=cart_list'">
                     장바구니
-                    <span id="basketCnt">0</span>
+                    <c:choose>
+		                        <c:when test="${empty sessionScope.loginUser}">
+		                            <span id="basketCnt">0</span>
+		                        </c:when>
+		                        <c:otherwise>
+		                            <span id="basketCnt">${sessionScope.cartCount }</span>
+		                        </c:otherwise>
+		                    </c:choose>
+                    
                 </button>
             </nav>
             <!-- gnbarea// -->
