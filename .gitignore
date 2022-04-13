@@ -25,4 +25,12 @@ hs_err_pid*
 .DS_Store
 /build/
 
+.classpath
+.idea
+.settings
+.project
+*.properties
+
+src/**/Secret.java
+
 .settings/org.eclipse.core.resources.prefs
