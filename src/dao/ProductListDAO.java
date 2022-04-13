@@ -31,7 +31,6 @@ public class ProductListDAO {
 
 		    Connection conn = null;
 		    CallableStatement ctmt = null;
-		    ResultSet rs = null;    
 
 		    try {
 		      conn = DBManager.getConnection();
@@ -43,8 +42,6 @@ public class ProductListDAO {
 		      
 		      Array ts = ctmt.getArray(1);
 		      Object[] objArr = (Object[]) ts.getArray();
-
-		      rs = ts.getResultSet();
 		      
 		      for(int i=0;i<objArr.length;i++) {
 		    	  Object[] attrs = null;
@@ -73,8 +70,9 @@ public class ProductListDAO {
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    } finally {
-		      DBManager.close(conn, ctmt, rs);
+		      DBManager.close(conn, ctmt);
 		    }
 	        return productList;
 	  }    
+	  	  
 }
