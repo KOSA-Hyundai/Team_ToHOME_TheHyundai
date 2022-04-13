@@ -17,11 +17,7 @@
   
   <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
-  <link rel="stylesheet" type="text/css" href="css/productList/css-library.min.css?after">
-  <link rel="stylesheet" type="text/css" href="css/productList/common.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
-  <link rel="stylesheet" type="text/css" href="css/productList/product.min.css?after">
-  <link rel="stylesheet" type="text/css" href="css/productList/event.min.css?after">
 </head>
 <body>
 	<div id="wrap" class="main">

@@ -10,7 +10,6 @@ import javax.sql.DataSource;
 
 public class DBManager {
 
-	
 	public static Connection getConnection() {
 		
 		Connection conn = null; 

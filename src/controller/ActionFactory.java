@@ -16,8 +16,8 @@ public class ActionFactory {
 
     public Action getAction(String command) {
         Action action = null;
-        System.out.println("ActionFactory  :" + command);
-
+        System.out.println("ActionFactory  : " + command);
+        
         if (command.equals("main")) {
             action = new MainAction();
         } else if (command.equals("join")) {
@@ -38,15 +38,18 @@ public class ActionFactory {
             action = new UpdateAction();
         } else if (command.equals("updateMember")) {
             action = new UpdateMemberAction();
-        } else if (command.equals("product_list")) {
-	        action = new ProductListAction();
-	    } else if (command.equals("product_search")) {
-	    	action = new ProductSearchAction();
-	    } else if (command.equals("product_sale")) {
-	    	action = new ProductSaleAction();
-	    }
+	    	} else if (command.equals("productList")) {
+	          action = new ProductListAction();
+        } else if (command.equals("product_search")) {
+          action = new ProductSearchAction();
+        } else if (command.equals("product_sale")) {
+          action = new ProductSaleAction();
+        } else if (command.equals("id_check_form")) {
+          action = new IdCheckFormAction();
+        } else if (command.equals("cart_list")) {
+          action = new CartListAction();
+        }
 		
-		return action;
+  		return action;
 	}
-
 }
