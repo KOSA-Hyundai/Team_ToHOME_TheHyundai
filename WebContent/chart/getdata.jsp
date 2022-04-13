@@ -5,7 +5,7 @@
 
 <%
     Connection con= null;
-	String url="jdbc:oracle:thin:@db202204041648_high?TNS_ADMIN=C://Oracle//Wallet_DB202204041648";
+	String url="jdbc:oracle:thin:@DB202204041648_high?TNS_ADMIN=//Users//gojeongmin//dev//oracle-wallet//Wallet_DB202204041648//";
 	String uid="HYUNDAI_TOHOME_USER";
 	String pwd="Hyndaiteam1234";
 	String driver="oracle.jdbc.driver.OracleDriver";
