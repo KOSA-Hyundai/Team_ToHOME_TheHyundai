@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/cart/order.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main/common.min.css"/>
-  	<script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
-    <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
+  <meta charset="UTF-8">
+  <title>새벽투홈</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css">
+
+  <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
+  <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
+  <script type="text/javascript" src="js/main/main.min.js"></script>
+  <script type="text/javascript" src="js/main/GoogleAnalyticsBuilder.js?ver=16"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
 </head>
 <body>
 	<div id="wrap" class="main">
@@ -28,29 +34,28 @@
                         </h1>
                         <!--로고 들어가는 곳//-->
 
-                <!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
-                <div class="util" id="dawnLoginN" style="display: hidden;">
-                    <c:choose>
-                        <c:when test="${empty sessionScope.loginUser}">
-                            <a href="HyundaiServlet?command=login_form">로그인</a>
-                            <a href="HyundaiServlet?command=joinStep1">회원가입</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a style="color: gray;">${sessionScope.loginUser.name}님! 반갑습니다.</a>
-                            <a href="HyundaiServlet?command=logout" style="color: black;">로그아웃</a>
-                            <a href="HyundaiServlet?command=updateMember">회원정보변경</a>
-                        </c:otherwise>
-                    </c:choose>
-                    <a href="HyundaiServlet?command=mypage">마이페이지</a>
-                    <a href="#none">고객센터</a>
-                </div>
-                <!-- 로그인, 회원가입, 마이페이지, 고객센터// -->
-
-                <!-- //팝업 : 개인화 상품 추천 -->
-                <div id="popProd"></div>
-                <!-- 팝업 : 개인화 상품 추천// -->
-            </div>
-            <!-- //toparea -->
+		                <!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
+		                <div class="util" id="dawnLoginN" style="display: hidden;">
+		                    <c:choose>
+		                        <c:when test="${empty sessionScope.loginUser}">
+		                            <a href="HyundaiServlet?command=login_form">로그인</a>
+		                            <a href="HyundaiServlet?command=joinStep1">회원가입</a>
+		                        </c:when>
+		                        <c:otherwise>
+		                            <a style="color: gray;">${sessionScope.loginUser.name}님! 반갑습니다.</a>
+		                            <a href="HyundaiServlet?command=logout" style="color: black;">로그아웃</a>
+		                            <a href="HyundaiServlet?command=updateMember">회원정보변경</a>
+		                        </c:otherwise>
+		                    </c:choose>
+		                    <a href="HyundaiServlet?command=mypage">마이페이지</a>
+		                    <a href="#none">고객센터</a>
+		                </div>
+		                <!-- 로그인, 회원가입, 마이페이지, 고객센터// -->
+		                <!-- //팝업 : 개인화 상품 추천 -->
+		                <div id="popProd"></div>
+		                <!-- 팝업 : 개인화 상품 추천// -->
+            		</div>
+            		<!-- //toparea -->
 
             <!-- //gnbarea -->
             <nav class="gnbarea">
@@ -98,47 +103,42 @@
                 <!-- 카테고리// -->
                 <!-- //gnb-list -->
                 <ul class="gnb-list" id="homeGnbList">
-                    <li><a class href="#none">베스트</a></li>
-                    <li><a class href="#none">세일</a></li>
-                    <li><a class href="#none">신상품</a></li>
-                    <li><a class href="#none">매거진</a></li>
-                    <li><a class href="#none">선물하기</a></li>
-                    <li><a class href="#none">이벤트</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">베스트</a></li>
+                    <li><a class href="HyundaiServlet?command=product_sale">세일</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">신상품</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">매거진</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">선물하기</a></li>
+                    <li><a class href="/chart/goolglechart.html">구글차트</a></li>
                 </ul>
                 <!--gnb-list// -->
 
-                <!-- //searcharea -->
-                <div class="searcharea">
-                    <form name="pdPcSearchForm" id="pdPcSearchForm" method="post">
-                        <fieldset>
-                            <legend class="hide">검색어 입력</legend>
+						<!-- //searcharea -->
+                        <div class="searcharea">
+                            <form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="HyundaiServlet?command=product_search">
+                                <fieldset>
+                                    <legend class="hide">검색어 입력</legend>
 
-                            <div class="form-entry exist search">
-                                <input
-                                        type="text"
-                                        name="keyWord"
-                                        title="검색어 입력"
-                                        onfocus="fn.addClass('.searcharea');$('.defaultsearch').fadeIn();"
-                                        oninput="handleOnInput(this, 20);"
-                                        autocomplete="off"
-                                        onkeyup="fnPDSearchAutoSelect(this, event);"
-                                />
-                                <!-- <button type="button" class="btn-del" tabindex="-1">삭제</button> -->
-                                <button type="button" class="btn-search"
-                                        onclick="GA_Event('PC_공통', '헤더', '검색'); fnPDSearchSubmit();">검색
-                                </button>
-                            </div>
-                            <input type="text" name="searchTerm" class="hide"/>
-                            <input type="text" name="category" class="hide"/>
-                            <input type="text" name="pageNumber" class="hide"/>
-                            <input type="text" name="rowsPerPage" class="hide"/>
-                            <input type="text" name="tagNm" class="hide"/>
-                        </fieldset>
-                    </form>
-                </div>
-                <!-- searcharea// -->
+                                    <div class="form-entry exist search">
+                                        <input
+                                            type="text"
+                                            name="productName"
+                                            id="productName"
+                                            title="상품명 입력"
+                                            onfocus="fn.addClass('.searcharea');$('.defaultsearch').fadeIn();"
+                                            oninput="handleOnInput(this, 20);"
+                                            autocomplete="off"
+                                            onkeyup="fnPDSearchAutoSelect(this, event);"
+                                            required
+                                        />
+                                        <!-- <button type="button" class="btn-del" tabindex="-1">삭제</button> -->
+                                        <button type="submit" class="btn-search">검색</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- searcharea// -->               
                 <button type="button" class="btn-cart"
-                        onclick="location.href='HyundaiServlet?command=cart_list'">
+                        onclick="alert('준비중인 기능입니다.'); return false;">
                     장바구니
                     <span id="basketCnt">0</span>
                 </button>

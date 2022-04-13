@@ -34,7 +34,7 @@
 	<section class="innercon exhibition aos-init aos-animate" data-aos="fade-up">
 		<ul class="exhibition-ban">
 			<li>
-				<a href="" onclick="GA_Event('PC_새벽투홈_메인', '직각배너','오늘의 추천상품이 궁금하다면');"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2021/11/01/104726/lqgpp.jpg?RS=1204x160" alt=""></a>
+				<a href="" onclick=""><img src="https://tohomeimage.thehyundai.com/DP/DP034/2021/11/01/104726/lqgpp.jpg?RS=1204x160" alt=""></a>
 			</li>
 		</ul>
 	</section>
@@ -44,7 +44,7 @@
 	<section class="innercon exhibition aos-init aos-animate" data-aos="fade-up">
 		<ul class="exhibition-ban">
 			<li>
-				<a href="" onclick="GA_Event('PC_새벽투홈_메인', '직각배너','오늘의 추천상품이 궁금하다면');"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2022/04/04/145725/avlaf.jpg?RS=1204x160" alt=""></a>
+				<a href="" onclick=""><img src="https://tohomeimage.thehyundai.com/DP/DP034/2022/04/04/145725/avlaf.jpg?RS=1204x160" alt=""></a>
 			</li>
 		</ul>
 	</section>
@@ -52,19 +52,7 @@
 	
 	<!-- //상품 미리보기 1 -->
 	<section class="innercon category aos-init" data-aos="fade-up">
-		<h2><strong style="color:;font-weight:">아기와 어린이</strong><a href="" onclick="" class="btn all">${productList[0].id} 전체보기</a></h2>
-		<div class="swiper-container categorytitleswiper swiper-container-horizontal">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">유아용품</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">장난감 · 완구</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">장난감 · 완구</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">어린이 간식 · 음료</div>
-			</div>
-			<div class="swiper-pagination-categorytitle swiper-pagination-clickable swiper-pagination-bullets">
-				<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-			</div>
-			<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-		</div>
+		<h2><strong style="color:;font-weight:">${categoryList[1].bigCategory}</strong><a href="HyundaiServlet?command=product_list&high_category_id=${categoryList[1].bigId}" onclick="" class="btn all">${categoryList[1].bigCategory} 전체보기</a></h2>
 		<div class="swiper-container categoryswiper swiper-container-horizontal swiper-container-autoheight">
 			<div class="swiper-wrapper" style="height: 331px; transform: translate3d(0px, 0px, 0px);">
 				<div class="swiper-slide" style="width: 1204px; margin-right: 10px;">
@@ -74,7 +62,14 @@
 								<a href="">
 									<span class="thumb"><img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
 										<div class="badgewrap">
-											<span class="badge"><strong></strong></span>
+											<c:choose> 
+												<c:when test="${productVO.discount != 0}">
+													<span class="badge"><strong>${productVO.discount}%</strong></span>
+												</c:when>
+												<c:otherwise>
+													<span class="badge"><strong></strong></span>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</span><strong class="txt-ti ellipsis">${productVO.prodName}</strong>
 								</a>
@@ -82,10 +77,10 @@
 									<span class="txt-price">
 										<c:choose> 
 											<c:when test="${productVO.discount == 0}">
-												<strong><em>${productVO.price}</em>원</strong>												
+												<strong><em><fmt:formatNumber type="number" value="${productVO.price}"/></em>원</strong>												
 											</c:when>
 											<c:otherwise>
-												<strong><em></em>원</strong><del>${productVO.price}</del>
+												<strong><em><fmt:formatNumber type="number" maxFractionDigits="0" value="${productVO.price - productVO.price*(productVO.discount/100)}"/></em>원</strong><del>${productVO.price}</del>
 											</c:otherwise>
 										</c:choose>
 									</span>
@@ -101,65 +96,41 @@
 	
 	<!-- //상품 미리보기 2 -->
 	<section class="innercon category aos-init" data-aos="fade-up">
-		<h2><strong style="color:;font-weight:">아기와 어린이</strong><a href="" onclick="" class="btn all">아기와 어린이 전체보기</a></h2>
-		<div class="swiper-container categorytitleswiper swiper-container-horizontal">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">유아용품</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">장난감 · 완구</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">장난감 · 완구</div>
-				<div class="swiper-slide" onclick="" style="margin-right: 36px;">어린이 간식 · 음료</div>
-			</div>
-			<div class="swiper-pagination-categorytitle swiper-pagination-clickable swiper-pagination-bullets">
-				<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-			</div>
-			<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-		</div>
+		<h2><strong style="color:;font-weight:">${categoryList[7].bigCategory}</strong><a href="" onclick="" class="btn all">${categoryList[7].bigCategory} 전체보기</a></h2>
 		<div class="swiper-container categoryswiper swiper-container-horizontal swiper-container-autoheight">
 			<div class="swiper-wrapper" style="height: 331px; transform: translate3d(0px, 0px, 0px);">
 				<div class="swiper-slide" style="width: 1204px; margin-right: 10px;">
 					<ul class="product-list big">
-						<li>
-							<a href="">
-								<span class="thumb"><img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/6/1/5/4973655410516_00.JPG?RS=350x420" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
-									<div class="badgewrap">
-										<span class="badge"><strong>25%</strong></span>
-									</div>
-								</span><strong class="txt-ti ellipsis">[릿첼] AQ 첫걸음 드링킹 타입 (라이트블루)</strong>
-							</a>
-							<span class="info">
-								<span class="txt-price">
-									<strong><em>10,120</em>원</strong><del>13,500</del>
+						<c:forEach items="${productList2}" var="productVO">
+							<li>
+								<a href="">
+									<span class="thumb"><img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
+										<div class="badgewrap">
+											<c:choose> 
+												<c:when test="${productVO.discount != 0}">
+													<span class="badge"><strong>${productVO.discount}%</strong></span>
+												</c:when>
+												<c:otherwise>
+													<span class="badge"><strong></strong></span>
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</span><strong class="txt-ti ellipsis">${productVO.prodName}</strong>
+								</a>
+								<span class="info">
+									<span class="txt-price">
+										<c:choose> 
+											<c:when test="${productVO.discount == 0}">
+												<strong><em><fmt:formatNumber type="number" value="${productVO.price}"/></em>원</strong>												
+											</c:when>
+											<c:otherwise>
+												<strong><em><fmt:formatNumber type="number" maxFractionDigits="0" value="${productVO.price - productVO.price*(productVO.discount/100)}"/></em>원</strong><del>${productVO.price}</del>
+											</c:otherwise>
+										</c:choose>
+									</span>
 								</span>
-							</span>
-						</li>
-						<li>
-							<a href="">
-								<span class="thumb"><img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/6/1/5/4973655410516_00.JPG?RS=350x420" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
-									<div class="badgewrap">
-										<span class="badge"><strong>25%</strong></span>
-									</div>
-								</span><strong class="txt-ti ellipsis">[릿첼] AQ 첫걸음 드링킹 타입 (라이트블루)</strong>
-							</a>
-							<span class="info">
-								<span class="txt-price">
-									<strong><em>10,120</em>원</strong><del>13,500</del>
-								</span>
-							</span>
-						</li>
-						<li>
-							<a href="">
-								<span class="thumb"><img src="https://tohomeimage.thehyundai.com/PD/PDImages/S/6/1/5/4973655410516_00.JPG?RS=350x420" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
-									<div class="badgewrap">
-										<span class="badge"><strong>25%</strong></span>
-									</div>
-								</span><strong class="txt-ti ellipsis">[릿첼] AQ 첫걸음 드링킹 타입 (라이트블루)</strong>
-							</a>
-							<span class="info">
-								<span class="txt-price">
-									<strong><em>10,120</em>원</strong><del>13,500</del>
-								</span>
-							</span>
-						</li>	
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

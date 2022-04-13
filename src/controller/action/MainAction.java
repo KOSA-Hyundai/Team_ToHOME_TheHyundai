@@ -16,17 +16,21 @@ public class MainAction implements Action {
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {    
 	  
-	  	String url = "/main.jsp";	 
+	  	String url = "/main.jsp";
+	  	
 	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	  	ProductDAO productDAO = ProductDAO.getInstance();
 	  	
 	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
+	  	
 	  	ArrayList<ProductVO> productList = productDAO.productList(2);
+	  	ArrayList<ProductVO> productList2 = productDAO.productList(52);
 	  	
 	    request.setAttribute("categoryList", cateogoryList);
-	    request.setAttribute("productList", productList);
 	    
-	    System.out.println(productList);
+	    request.setAttribute("productList", productList);
+	    request.setAttribute("productList2", productList2);
+	    
 	  	
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);

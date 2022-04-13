@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+    <html>
+<head>
+      <title>Google Chart with jsp Mysql Json</title>
+      <meta http-equiv="Content-Type" 
+      content="text/html; charset=UTF-8">
+      <script type="text/javascript" 
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script type="text/javascript" 
+      src="https://www.google.com/jsapi"></script>
+</head>
+
+<body>
+
+ 
+ 
+ <script type="text/javascript">
+ 	//db 데이터 저장 객체
+     var queryObject="";
+ 	//db 데이터 저장 객체 객수 저장
+     var queryObjectLen="";
+     
+      //구글 그래프 그리기 시작
+      google.charts.load("visualization", "1", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+           var data = new google.visualization.DataTable();
+           data.addColumn('string', 'bigCategory');
+           data.addColumn('number', 'cnt');                     
+      
+           for(var i=0 ; i < queryObjectLen ; i++ ) {
+        	   	 var bigCategory = queryObject.productDetails[i].bigCategory;
+                 var cnt = queryObject.productDetails[i].cnt;
+                 data.addRows([
+                     [ bigCategory, parseInt(cnt)]
+                    ] );
+           }
+           
+   			var options = {title: '대분류별 상품 개수',};
+  
+    		var chart = 
+  				new google.visualization.PieChart(document.getElementById('chart_div'));
+
+ 			chart.draw(data,options);
+ 		}//drawChart() end 그래프 그리기 끝
+ 		
+ 	     function CallChart(){
+ 	    	 $.ajax({
+ 	             type : 'POST',
+ 	             url : 'getdata.jsp',
+ 	             dataType:'json',
+ 	             contentType: 'aplication/json',
+ 	             success : function(data) {
+ 	                      queryObject = eval('(' + JSON.stringify(data) + ')');
+ 	                      queryObjectLen = queryObject.productDetails.length;
+ 	                      drawChart();
+ 	                  },
+ 	            error : function(xhr, type) {
+ 	               alert('server error occoured')
+ 	                  }
+ 	         });//ajax 데이터 로드 끝 
+ 	     }
+
+ </script>
+ <input type="button" value="대분류별 상품 개수 차트 출력" onclick="CallChart();"></input>
+ <div id="chart_div"></div>
+ </body>
+ </html>
