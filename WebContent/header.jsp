@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="shortcut icon" type="image/x-icon" href="images/common/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/cart/order.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main/css-library.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main/common.min.css"/>
@@ -141,7 +142,7 @@
                 </div>
                 <!-- searcharea// -->
                 <button type="button" class="btn-cart"
-                        onclick="GA_Event('PC_공통', '헤더', '장바구니'); javascript:fnPdShippingBasketList( this);">
+                        onclick="location.href='HyundaiServlet?command=cart_list'">
                     장바구니
                     <span id="basketCnt">0</span>
                 </button>
