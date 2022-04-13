@@ -138,7 +138,7 @@
                         </div>
                         <!-- searcharea// -->               
                 <button type="button" class="btn-cart"
-                        onclick="alert('준비중인 기능입니다.'); return false;">
+                        onclick="location.href='HyundaiServlet?command=cart_list'">
                     장바구니
                     <span id="basketCnt">0</span>
                 </button>
