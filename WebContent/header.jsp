@@ -15,7 +15,6 @@
   	<link rel="stylesheet" type="text/css" href="css/productList/event.min.css?after"> -->
   	<script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
     <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
-  	<script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script>
 </head>
 <body>
 	<div id="wrap" class="main">

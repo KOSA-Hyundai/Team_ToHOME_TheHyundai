@@ -34,7 +34,7 @@
 </style>
 <script>
     function go_save() {
-        if (document.formm.email.value == "") {
+    	if (document.formm.email.value == "") {
             alert("이메일을 입력하여 주세요.");
             document.formm.email.focus();
             return false;
@@ -66,6 +66,16 @@
     function not_yet() {
         alert("준비중인 서비스입니다.");
     }
+    function idcheck() {
+    	if (document.formm.email.value == "") {
+    	    alert('아이디를 입력하여 주십시오.');
+    	    document.formm.email.focus();
+    	    return;
+    	}
+    	document.formm2.email.value = document.formm.email.value;
+    	document.formm2.action = "HyundaiServlet?command=id_check_form&email=" + document.formm.email.value;
+    	document.formm2.submit();
+    }
 </script>
 <div style="text-align: center;">
     <div style="display: inline-block; margin-bottom: 100px;">
@@ -76,6 +86,7 @@
                     <div class="linearea" style="margin-top: 40px; text-align: left;">
                         <section class="totalmember" style="margin-left: 60px; margin-right: 60px;">
                             <h1>가입정보를 입력해 주세요.</h1>
+                            <form id="emailcheck" method="post" name="formm2" ><input type="hidden" id="email" name="email"></form>
                             <form id="join" method="post" name="formm" onsubmit="return go_save();"
                                   action="HyundaiServlet?command=join">
                                 <fieldset style="width: 560px; margin-top: 40px;">
@@ -88,9 +99,10 @@
                                                     class="hide">필수</span></span><br/>
                                                 <input type="text" class="big" id="email" name="email" title="아이디"
                                                        placeholder="아이디" style="width: 460px;" onkeydown="resetID();"/>
-                                                <button type="button" class="btn fill big gray" onclick="not_yet();">
-                                                    인증하기
+                                                <button type="button" id="idc" class="btn fill big gray" onclick="idcheck();">
+                                                    중복체크
                                                 </button>
+                                                <iframe width=0 height=0 name="_blank_1" style="display:none;"></iframe>
                                                 <button type="button" class="btn-del">삭제</button>
                                             </label>
                                             <div class="infotxt" style="margin-bottom: 30px;">
