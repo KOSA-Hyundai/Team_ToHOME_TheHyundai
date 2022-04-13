@@ -1,20 +1,18 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
-<%@page import="java.io.*"%>
+<%@page import="javax.naming.*"%>
+<%@page import="javax.sql.*"%>
 <%@page import="org.json.JSONObject"%>
 
 <%
 Connection con = null;
-String url = "jdbc:oracle:thin:@DB202204041648_high?TNS_ADMIN=//Users//gojeongmin//dev//oracle-wallet//Wallet_DB202204041648//";
-String uid = "HYUNDAI_TOHOME_USER";
-String pwd = "Hyndaiteam1234";
-String driver = "oracle.jdbc.driver.OracleDriver";
 try {
-	Class.forName(driver).newInstance();
-	con = DriverManager.getConnection(url, uid, pwd);
+	Context initContext = new InitialContext();
+	Context envContext = (Context) initContext.lookup("java:/comp/env");
+	DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
+	con = ds.getConnection();
 	ResultSet rs = null;
 	List productDetails = new LinkedList();
 	JSONObject responseObj = new JSONObject();
