@@ -31,6 +31,6 @@ hs_err_pid*
 .project
 *.properties
 
-*.Secret.java
+src/**/Secret.java
 
 .settings/org.eclipse.core.resources.prefs
