@@ -64,7 +64,7 @@
 							</fieldset>
 							<!-- 결제내역// -->
 							<button type="button" class="btn fill bigger orange btn-order" style="float:right">
-								주문하기<em id="emTotalItemCnt">3</em>
+								주문하기
 							</button>
 						</div>
 					</form>
