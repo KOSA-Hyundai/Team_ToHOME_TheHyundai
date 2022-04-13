@@ -16,8 +16,8 @@ public class ActionFactory {
 
     public Action getAction(String command) {
         Action action = null;
-        System.out.println("ActionFactory  :" + command);
-
+        System.out.println("ActionFactory  : " + command);
+        
         if (command.equals("main")) {
             action = new MainAction();
         } else if (command.equals("join")) {
@@ -40,7 +40,9 @@ public class ActionFactory {
             action = new UpdateMemberAction();
         } else if (command.equals("product_list")) {
 	        action = new ProductListAction();
-	      }
+	    } else if (command.equals("id_check_form")) {
+	    	action = new IdCheckFormAction();
+	    }
         return action;
     }
 }
