@@ -51,8 +51,8 @@
 	<!-- 메인 띠 배너 2// -->
 	
 	<!-- //상품 미리보기 1 -->
-	<section class="innercon category aos-init" data-aos="fade-up"categoryList[1].>
-		<h2><strong style="color:;font-weight:">${categoryList[1].bigCategory}</strong><a href="" onclick="" class="btn all">${categoryList[1].bigCategory} 전체보기</a></h2>
+	<section class="innercon category aos-init" data-aos="fade-up">
+		<h2><strong style="color:;font-weight:">${categoryList[1].bigCategory}</strong><a href="HyundaiServlet?command=product_list&high_category_id=${categoryList[1].bigId}" onclick="" class="btn all">${categoryList[1].bigCategory} 전체보기</a></h2>
 		<div class="swiper-container categoryswiper swiper-container-horizontal swiper-container-autoheight">
 			<div class="swiper-wrapper" style="height: 331px; transform: translate3d(0px, 0px, 0px);">
 				<div class="swiper-slide" style="width: 1204px; margin-right: 10px;">
@@ -138,4 +138,4 @@
 	</section>
 	<!-- 상품 미리보기 2// -->	
 </div>
-<%@ include file="../footer.jsp" %>  
+<%@ include file="../footer.jsp" %> 

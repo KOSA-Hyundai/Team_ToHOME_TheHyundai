@@ -30,6 +30,9 @@ public class ProductSearchAction implements Action {
 	    ArrayList<CategoryVO> categoryList = categoryDAO.listCategory();
 	    ArrayList<ProductVO> searchList = productDAO.searchList(productName);	 
 	    
+	    System.out.println(categoryList);
+	    System.out.println(searchList);
+	    
 	    request.setAttribute("categoryList", categoryList);
 	    request.setAttribute("searchList", searchList);
 	    

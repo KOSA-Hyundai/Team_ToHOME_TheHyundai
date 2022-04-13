@@ -7,13 +7,8 @@
 	<div id="wrap2" class="product category" >
 
 		<div id="contents" style = "padding-top: 0px;">
-			<div class="innercon" id="reset_section">
-				<section class="list-filter">
-    				<strong class="txt-total">
-    					<span class="word" id="titleName"><b>'<%= request.getParameter("productName") %>'</b></span> 검색결과 
-    					<em id="titleCnt">${fn:length(searchList)}</em>건</strong>
-				</section>			
-
+			<div class="innercon">
+				<h2>세일</h2>		
 				<section class="list-filter">
 	                <strong class="txt-total"></strong>
 	                <div class="filter-wrapper">
@@ -89,20 +84,13 @@
 
 				<ul class="product-list" id="ulItemList">
 
-				  <c:forEach items="${searchList}" var="productVO">
+				  <c:forEach items="${productList}" var="productVO">
 					<li>
 						<a href="">						
 							<span class="thumb">
 								<img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
  								<div class="badgewrap">
-											<c:choose> 
-												<c:when test="${productVO.discount != 0}">
-													<span class="badge"><strong>${productVO.discount}%</strong></span>
-												</c:when>
-												<c:otherwise>
-													<span class="badge"><strong></strong></span>
-												</c:otherwise>
-											</c:choose> 								                                                            
+ 									<span class="badge"><strong>${productVO.discount}%</strong></span>                                                                 
 		                        </div>
 							</span>
 							<strong class="txt-ti ellipsis">${productVO.prodName}</strong>

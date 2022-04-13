@@ -18,12 +18,10 @@ public class MainAction implements Action {
 	  
 	  	String url = "/main.jsp";
 	  	
-	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();	 
+	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	  	ProductDAO productDAO = ProductDAO.getInstance();
 	  	
 	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
-	  	
-	  	System.out.println(cateogoryList.toString());
 	  	
 	  	ArrayList<ProductVO> productList = productDAO.productList(2);
 	  	ArrayList<ProductVO> productList2 = productDAO.productList(52);
@@ -33,8 +31,6 @@ public class MainAction implements Action {
 	    request.setAttribute("productList", productList);
 	    request.setAttribute("productList2", productList2);
 	    
-	    System.out.println(productList);
-	    System.out.println(productList2);
 	  	
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);

@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,28 +12,24 @@
 
   <script type="text/javascript" src="js/main/jquery-library.min.js?ver=15"></script>
   <script type="text/javascript" src="js/main/function.min.js?ver=15"></script>
+  <script type="text/javascript" src="js/main/main.min.js"></script>
+  <script type="text/javascript" src="js/main/GoogleAnalyticsBuilder.js?ver=16"></script>
   
+  <link rel="stylesheet" type="text/css" href="css/member/mypage.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/main/common.min.css">
-
   <link rel="stylesheet" type="text/css" href="css/productList/css-library.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/productList/common.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/main/main.min.css">
   <link rel="stylesheet" type="text/css" href="css/productList/product.min.css?after">
   <link rel="stylesheet" type="text/css" href="css/productList/event.min.css?after">
-  <!-- <script type="text/javascript" src="js/main/common.js?ver=1649312205468"></script> -->
-  <script type="text/javascript" src="js/main/main.min.js"></script>
-  <script type="text/javascript" src="js/main/GoogleAnalyticsBuilder.js?ver=16"></script>
 </head>
 <body>
 	<div id="wrap" class="main">
     	<!--헤더파일 들어가는 곳 시작 -->
         <header id="header">
-            
         	<div id="topBanner"></div>
-
                 <!-- //상단배너 -->
-                <div class="inner">
-                
+                <div class="inner">  
                     <!-- //toparea -->
                     <div class="toparea">
                         <!-- //로고 들어가는 곳--->
@@ -42,90 +38,85 @@
                         </h1>
                         <!--로고 들어가는 곳//-->
 
-                        <!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
-                        <div class="util" id="dawnLoginN" style="display: hidden;">
-                            <c:choose>
-                                <c:when test="${empty sessionScope.loginUser}">
-                                    <a href="HyundaiServlet?command=login_form">로그인</a>
-                                    <a href="HyundaiServlet?command=joinStep1">회원가입</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a style="color: gray;">${sessionScope.loginUser.name}님! 반갑습니다.</a>
-                                    <a href="HyundaiServlet?command=logout" style="color: black;">로그아웃</a>
-                                    <a href="#">회원정보변경</a>
-                                </c:otherwise>
-                            </c:choose>
-                            <a href="HyundaiServlet?command=mypage">마이페이지</a>
-                            <a href="#none">고객센터</a>
-                            
-                            
-                        </div>
-                        <!-- 로그인, 회원가입, 마이페이지, 고객센터// -->
+		                <!-- //로그인, 회원가입, 마이페이지, 고객센터 -->
+		                <div class="util" id="dawnLoginN" style="display: hidden;">
+		                    <c:choose>
+		                        <c:when test="${empty sessionScope.loginUser}">
+		                            <a href="HyundaiServlet?command=login_form">로그인</a>
+		                            <a href="HyundaiServlet?command=joinStep1">회원가입</a>
+		                        </c:when>
+		                        <c:otherwise>
+		                            <a style="color: gray;">${sessionScope.loginUser.name}님! 반갑습니다.</a>
+		                            <a href="HyundaiServlet?command=logout" style="color: black;">로그아웃</a>
+		                            <a href="HyundaiServlet?command=updateMember">회원정보변경</a>
+		                        </c:otherwise>
+		                    </c:choose>
+		                    <a href="HyundaiServlet?command=mypage">마이페이지</a>
+		                    <a href="#none">고객센터</a>
+		                </div>
+		                <!-- 로그인, 회원가입, 마이페이지, 고객센터// -->
+		                <!-- //팝업 : 개인화 상품 추천 -->
+		                <div id="popProd"></div>
+		                <!-- 팝업 : 개인화 상품 추천// -->
+            		</div>
+            		<!-- //toparea -->
 
-                        <!-- //팝업 : 개인화 상품 추천 -->
-                        <div id="popProd"></div>
-                        <!-- 팝업 : 개인화 상품 추천// -->
+            <!-- //gnbarea -->
+            <nav class="gnbarea">
+                <div id="popCategory">
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            // 퍼블 정상 동작을 위해 $(document).ready에 추가
+                            $(".depth1.brand-wrap .depth2 button, .depth3").hover(
+                                function () {
+                                    $(this).parents("ul.lnb").addClass("on");
+                                },
+                                function () {
+                                    $(this).parents("ul.lnb").removeClass("on");
+                                }
+                            );
+                            $(".exhibition-wrap, .brand-ct").hover(
+                                function () {
+                                    $(this).parents("ul.lnb").addClass("on2");
+                                },
+                                function () {
+                                    $(this).parents("ul.lnb").removeClass("on2");
+                                }
+                            );
+                        });
+                    </script>
+                    <!-- //카테고리 -->
+                    <button type="button" class="btn-category">카테고리 전체보기</button>
+                    <div id="p_popCategory" class="popcategory">
+                        <nav class="lnb-list">
+									        <ul class="lnb">
+										        <c:forEach items="${categoryList}" var="categoryVO" varStatus="status">
+											        <li class="depth1">
+												        <button type="button" onclick="">${categoryVO.bigCategory}</button>													
+                                  <ul class="depth2">
+                                    <c:forEach items="${categoryVO.smallCategory}"  var="smallCategory">
+															        <li><a href="" onclick="">${smallCategory}</a></li>
+														        </c:forEach>
+													        </ul>
+											        </li>
+										        </c:forEach>
+									        </ul>
+								        </nav>
                     </div>
-                    <!-- //toparea -->
+                </div>
+                <!-- 카테고리// -->
+                <!-- //gnb-list -->
+                <ul class="gnb-list" id="homeGnbList">
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">베스트</a></li>
+                    <li><a class href="HyundaiServlet?command=product_sale">세일</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">신상품</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">매거진</a></li>
+                    <li><a class href="" onclick="alert('준비중인 메뉴입니다.'); return false;">선물하기</a></li>
+                    <li><a class href="/chart/goolglechart.html">구글차트</a></li>
+                </ul>
+                <!--gnb-list// -->
 
-                    <!-- //gnbarea -->
-                    <nav class="gnbarea">
-                        <div id="popCategory">
-                            <script type="text/javascript">
-                                $(document).ready(function () {
-                                    // 퍼블 정상 동작을 위해 $(document).ready에 추가
-                                    $(".depth1.brand-wrap .depth2 button, .depth3").hover(
-                                        function () {
-                                            $(this).parents("ul.lnb").addClass("on");
-                                        },
-                                        function () {
-                                            $(this).parents("ul.lnb").removeClass("on");
-                                        }
-                                    );
-
-                                    $(".exhibition-wrap, .brand-ct").hover(
-                                        function () {
-                                            $(this).parents("ul.lnb").addClass("on2");
-                                        },
-                                        function () {
-                                            $(this).parents("ul.lnb").removeClass("on2");
-                                        }
-                                    );
-                                });
-                            </script>
-                            <!-- //카테고리 -->
-                            <button type="button" class="btn-category">카테고리 전체보기</button>
-                            <div id="p_popCategory" class="popcategory">
-								<nav class="lnb-list">
-									<ul class="lnb">
-										<c:forEach items="${categoryList}" var="categoryVO" varStatus="status">
-											<li class="depth1">
-												<button type="button" onclick="">${categoryVO.bigCategory}</button>													
-													<ul class="depth2">
-														<c:forEach items="${categoryVO.smallCategory}"  var="smallCategory">
-															<li><a href="" onclick="">${smallCategory}</a></li>
-														</c:forEach>
-													</ul>
-											</li>
-										</c:forEach>
-									</ul>
-								</nav>
-                            </div>
-                        </div>
-                        <!-- 카테고리// -->
-
-                        <!-- //gnb-list -->
-                        <ul class="gnb-list" id="homeGnbList">
-                            <li><a class href="#none">베스트</a></li>
-                            <li><a class href="#none">세일</a></li>
-                            <li><a class href="#none">신상품</a></li>
-                            <li><a class href="#none">매거진</a></li>
-                            <li><a class href="#none">선물하기</a></li>
-                            <li><a class href="#none">이벤트</a></li>
-                        </ul>
-                        <!--gnb-list// -->
-
-                        <!-- //searcharea -->
+						<!-- //searcharea -->
                         <div class="searcharea">
                             <form name="pdPcSearchForm" id="pdPcSearchForm" method="post" action="HyundaiServlet?command=product_search">
                                 <fieldset>
@@ -149,14 +140,15 @@
                                 </fieldset>
                             </form>
                         </div>
-                        <!-- searcharea// -->
-                        <button type="button" class="btn-cart" onclick="GA_Event('PC_공통', '헤더', '장바구니'); javascript:fnPdShippingBasketList( this);">
-                            장바구니
-                            <span id="basketCnt">0</span>
-                        </button>
-                    </nav>
-                    <!-- gnbarea// -->
-                </div>
-                <!-- 상단배너// -->
-            </header>
-            <!--헤더파일 들어가는 곳 끝 -->
+                        <!-- searcharea// -->               
+                <button type="button" class="btn-cart"
+                        onclick="alert('준비중인 기능입니다.'); return false;">
+                    장바구니
+                    <span id="basketCnt">0</span>
+                </button>
+            </nav>
+            <!-- gnbarea// -->
+        </div>
+        <!-- 상단배너// -->
+    </header>
+    <!--헤더파일 들어가는 곳 끝 -->

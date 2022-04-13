@@ -89,4 +89,40 @@ public class ProductDAO {
 	
 		return productList;
 	}
+	
+	// 할인중인 상품 목록 출력 기능
+	public ArrayList<ProductVO> saleList(){
+		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+		String sql = "SELECT * FROM TABLE(PRODUCT_LIST_PACKAGE.FN_SALE_PROD)";
+		Connection conn = null;
+		CallableStatement csmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			csmt = conn.prepareCall(sql);
+			
+			rs = csmt.executeQuery();
+			while (rs.next()) {
+				ProductVO product = new ProductVO();
+				product.setId(rs.getInt("id"));
+				product.setProdCategory(rs.getInt("prod_category"));;
+				product.setProdName(rs.getString("prod_name"));	
+				product.setProdDetail(rs.getString("prod_detail"));
+				product.setPrice(rs.getInt("price"));
+				product.setDiscount(rs.getInt("discount"));
+				product.setPackageType(rs.getString("package_type"));
+				product.setOrigin(rs.getString("origin"));
+				product.setProdImg(rs.getString("prod_img"));
+				
+				productList.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, csmt, rs);
+		}
+	
+		return productList;
+	}
 }
