@@ -42,6 +42,8 @@ public class ActionFactory {
 	        action = new ProductListAction();
 	    } else if (command.equals("id_check_form")) {
 	    	action = new IdCheckFormAction();
+	    } else if (command.equals("cart_list")) {
+	    	action = new CartListAction();
 	    }
         return action;
     }
