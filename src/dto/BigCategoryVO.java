@@ -2,10 +2,10 @@ package dto;
 
 import java.util.ArrayList;
 
-public class BigCategoryDTO {
+public class BigCategoryVO {
 	private int id;
 	private String bigCategory;
-	private ArrayList<SmallCategoryDTO> smallCategoryList = new ArrayList<>();
+	private ArrayList<SmallCategoryVO> smallCategoryList = new ArrayList<>();
 		
 	public String getBigCategory() {
 		return bigCategory;
@@ -13,10 +13,10 @@ public class BigCategoryDTO {
 	public void setBigCategory(String bigCategory) {
 		this.bigCategory = bigCategory;
 	}
-	public ArrayList<SmallCategoryDTO> getSmallCategoryList() {
+	public ArrayList<SmallCategoryVO> getSmallCategoryList() {
 		return smallCategoryList;
 	}
-	public void setSmallCategory(ArrayList<SmallCategoryDTO> smallCategoryList) {
+	public void setSmallCategory(ArrayList<SmallCategoryVO> smallCategoryList) {
 		this.smallCategoryList = smallCategoryList;
 	}
 	public int getId() {
@@ -26,12 +26,12 @@ public class BigCategoryDTO {
 		this.id = id;
 	}
 	
-	public BigCategoryDTO(int id, String bigCategory) {
+	public BigCategoryVO(int id, String bigCategory) {
 		super();
 		this.id = id;
 		this.bigCategory = bigCategory;
 	}
-	public void addSmallCategory(SmallCategoryDTO smallCategoryDTO) {
+	public void addSmallCategory(SmallCategoryVO smallCategoryDTO) {
 		this.smallCategoryList.add(smallCategoryDTO);
 	}
 	@Override

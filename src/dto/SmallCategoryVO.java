@@ -1,6 +1,6 @@
 package dto;
 
-public class SmallCategoryDTO {
+public class SmallCategoryVO {
 	private int id;
 	private String smallCategory;
 
@@ -16,7 +16,7 @@ public class SmallCategoryDTO {
 	public void setSmallCategory(String smallCategory) {
 		this.smallCategory = smallCategory;
 	}
-	public SmallCategoryDTO(int id, String smallCategory) {
+	public SmallCategoryVO(int id, String smallCategory) {
 		super();
 		this.id = id;
 		this.smallCategory = smallCategory;

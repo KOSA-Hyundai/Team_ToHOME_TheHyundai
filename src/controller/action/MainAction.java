@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
@@ -23,7 +23,7 @@ public class MainAction implements Action {
 	  	ProductDAO productDAO = ProductDAO.getInstance();
 	  	
 	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
-	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+	    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	  	
 	  	ArrayList<ProductVO> productList = productDAO.productList(2);
 	  	ArrayList<ProductVO> productList2 = productDAO.productList(52);

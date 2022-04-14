@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CategoryDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.MemberVO;
 
 public class MyPageAction implements Action {
@@ -20,7 +20,7 @@ public class MyPageAction implements Action {
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
   	CategoryDAO categoryDAO = CategoryDAO.getInstance();
   	
-    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 
     request.setAttribute("menuCategoryList", menuCateogoryList);
 
