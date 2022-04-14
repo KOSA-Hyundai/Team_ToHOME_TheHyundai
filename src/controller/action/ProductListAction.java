@@ -27,7 +27,8 @@ public class ProductListAction implements Action {
 	    HttpSession session = request.getSession();	    
 	    String url = "productList/productList.jsp";
 	    int bigCategoryId = Integer.parseInt(request.getParameter("bigCtryId"));
-	    int smallCategoryId = request.getParameter("smallCtryId") != null ? Integer.parseInt(request.getParameter("smallCtryId")) : -1;
+	    int smallCategoryId = request.getParameter("smallCtryId") != null && !request.getParameter("smallCtryId").equals("") ? Integer.parseInt(request.getParameter("smallCtryId")) : -1;
+
 	    String sortType = request.getParameter("sortType");
 
 	    BigCategoryDTO bigCategory = null;
@@ -36,23 +37,33 @@ public class ProductListAction implements Action {
 	    CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	    ArrayList<ProductVO> productList = productListDAO.listProduct(smallCategoryId);	    	  	
 	    ArrayList<BigCategoryDTO> cateogoryList = categoryDAO.getCategoryInfo();
-	    for(BigCategoryDTO bc : cateogoryList) {
-	    	for(SmallCategoryDTO sc : bc.getSmallCategoryList()) {
-	    		if(sc.getId() == smallCategoryId) {
+
+	    if(smallCategoryId == -1) {
+	    	productList = productListDAO.getProductListByBigId(bigCategoryId);	    	
+	    	for(BigCategoryDTO bc : cateogoryList) {
+	    		if(bc.getId() == bigCategoryId) {
 	    			bigCategory = bc;
-	    			smallCategory = sc;
 	    			break;
 	    		}
-	    	}
-	    }	
-	    	    
+	    	}		    		    	
+	    }else {
+	    	for(BigCategoryDTO bc : cateogoryList) {
+	    		for(SmallCategoryDTO sc : bc.getSmallCategoryList()) {
+	    			if(sc.getId() == smallCategoryId) {
+	    				bigCategory = bc;
+	    				smallCategory = sc;
+	    				break;
+	    			}
+	    		}
+	    	}		    	
+	    }
+	    
 	  	switch (sortType) {
 		case "lowPrice":
 			productList = (ArrayList<ProductVO>) productList.stream()
 							.sorted((p1, p2) ->
 								p1.getPrice() * (1 - (p1.getDiscount() / 100)) - p2.getPrice() * (1 - (p2.getDiscount() / 100)))
-							.collect(Collectors.toList());												
-			
+							.collect(Collectors.toList());															
 			break;
 		case "highPrice":
 			productList = (ArrayList<ProductVO>) productList.stream()

@@ -34,3 +34,6 @@ hs_err_pid*
 src/**/Secret.java
 
 .settings/org.eclipse.core.resources.prefs
+
+.classpath
+/bin/

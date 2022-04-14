@@ -83,19 +83,19 @@
                     <button type="button" class="btn-category">카테고리 전체보기</button>
                     <div id="p_popCategory" class="popcategory">
                         <nav class="lnb-list">
-									        <ul class="lnb">
-										        <c:forEach items="${categoryList}" var="BigCategoryVO" varStatus="status">
-											        <li class="depth1">
-												        <button type="button" onclick="">${BigCategoryVO.bigCategory}</button>													
-                                  <ul class="depth2">
-                                    <c:forEach items="${BigCategoryVO.smallCategoryList}"  var="SmallCategoryVO">
-															        <li><a href="" onclick="">${SmallCategoryVO.smallCategory}</a></li>
-														        </c:forEach>
-													        </ul>
-											        </li>
-										        </c:forEach>
-									        </ul>
-								        </nav>
+					        <ul class="lnb">
+						        <c:forEach items="${categoryList}" var="BigCategoryVO" varStatus="status">
+							        <li class="depth1">
+								        <button type="button" onclick="location.href='HyundaiServlet?command=productList&bigCtryId=${BigCategoryVO.id}&smallCtryId&sortType'">${BigCategoryVO.bigCategory}</button>													
+		                              <ul class="depth2">
+       				                        <c:forEach items="${BigCategoryVO.smallCategoryList}"  var="SmallCategoryVO">
+									 	       <li><a onclick="location.href='HyundaiServlet?command=productList&bigCtryId=${BigCategoryVO.id}&smallCtryId=${SmallCategoryVO.id}&sortType'">${SmallCategoryVO.smallCategory}</a></li>
+									        </c:forEach>
+				  			          </ul>
+							        </li>
+						        </c:forEach>
+					        </ul>
+				        </nav>
                     </div>
                 </div>
                 <!-- 카테고리// -->

@@ -5,6 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.CategoryDAO;
+import dto.BigCategoryDTO;
 import dto.MemberVO;
 
 public class MyPageAction implements Action {
@@ -15,6 +18,11 @@ public class MyPageAction implements Action {
     String url = "member/mypage.jsp"; 
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
+  	
+    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+
+    request.setAttribute("menuCategoryList", menuCateogoryList);
 
     if (loginUser == null) {
       url = "HyundaiServlet?command=login_form";

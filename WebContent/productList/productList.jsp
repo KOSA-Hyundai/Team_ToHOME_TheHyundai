@@ -12,14 +12,21 @@
 		            <div class="depth">
  						<h2>${bigCategory.bigCategory}</h2>
  		                <div class="path">
-                        	홈<img src="images/common/path_arrow.png" alt="">${smallCategory.smallCategory}  
+							<c:choose>
+								<c:when test="${smallCategory eq null}">
+	           		            	홈<img src="images/common/path_arrow.png" alt="">전체보기   								
+								</c:when>
+								<c:otherwise>
+	           		            	홈<img src="images/common/path_arrow.png" alt="">${smallCategory.smallCategory}  
+								</c:otherwise>
+							</c:choose>								
 				        </div>
 	                </div>   
 
 	                <!-- 카테고리// -->
 	                <div class="depth-sub">
 	                    <ul>        
- 		                    <li class=""><a href="HyundaiServlet?command=productList&bigCtryId=${bigCategory.id}&smallCtry&sortType">전체보기</a></li> 		                    						  
+ 		                      <li class=""><a href="HyundaiServlet?command=productList&bigCtryId=${bigCategory.id}&smallCtryId&sortType">전체보기</a></li> 		                    						  
 						    <c:forEach items="${bigCategory.smallCategoryList}" var="smallCtry">
 		                      <li class=""><a href="HyundaiServlet?command=productList&bigCtryId=${bigCategory.id}&smallCtryId=${smallCtry.id}&sortType">${smallCtry.smallCategory}</a></li> 		                    
 						    </c:forEach>
@@ -73,14 +80,14 @@
 	                     <!--브랜드  -->
 	                     
 	                     <!--배송  -->
-	                     <div class="delivery">
+<!-- 	                     <div class="delivery">
 	                         <strong class="ti">배송구분</strong>
 	                         <div class="con">
 	                             <label><input type="radio" name="delivery" data-active-ti="deliverydiv" value="C"><span>정기배송</span></label>
 	                             <label><input type="radio" name="delivery" data-active-ti="deliverydiv" value="D"><span>예약배송</span></label>
 	                         </div>
 	                     </div>
-	                 </div>
+ -->	                 </div>
 	
 	                <div class="btns">
 	                    <button type="button" class="btn black btn-reset" onclick="fn.filterNavReset();">초기화</button>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
+import dto.BigCategoryDTO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
@@ -25,15 +26,15 @@ public class ProductSearchAction implements Action {
 	    String productName = request.getParameter("productName");
 	    
 	    ProductDAO productDAO = ProductDAO.getInstance();
-	    CategoryDAO categoryDAO = CategoryDAO.getInstance();
+	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	    
-	    ArrayList<CategoryVO> categoryList = categoryDAO.listCategory();
+	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	    ArrayList<ProductVO> searchList = productDAO.searchList(productName);	 
 	    
-	    System.out.println(categoryList);
+	    System.out.println(menuCateogoryList);
 	    System.out.println(searchList);
 	    
-	    request.setAttribute("categoryList", categoryList);
+	    request.setAttribute("menuCategoryList", menuCateogoryList);
 	    request.setAttribute("searchList", searchList);
 	    
 	    request.getRequestDispatcher(url).forward(request, response);

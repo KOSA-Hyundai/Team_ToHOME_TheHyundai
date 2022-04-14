@@ -25,8 +25,7 @@ public class ProductListDAO {
 	    return instance;
 	  }  
 
-	  @SuppressWarnings("deprecation")
-	public ArrayList<ProductVO> listProduct(int categoryNumber) {	  
+	  public ArrayList<ProductVO> listProduct(int smallCategoryId) {	  
 		    ArrayList<ProductVO> productList = new ArrayList<>();
 
 		    Connection conn = null;
@@ -37,7 +36,7 @@ public class ProductListDAO {
 		      ctmt = conn.prepareCall("{ ? = call PRODUCT_LIST_PACKAGE.FN_GET_PROD(?) }");
 		      
 		      ctmt.registerOutParameter(1, OracleTypes.ARRAY,"PROD_TABLE");
-		      ctmt.setInt(2, categoryNumber);
+		      ctmt.setInt(2, smallCategoryId);
 		      ctmt.execute();	
 		      
 		      Array ts = ctmt.getArray(1);
@@ -74,5 +73,55 @@ public class ProductListDAO {
 		    }
 	        return productList;
 	  }    
-	  	  
+
+	  public ArrayList<ProductVO> getProductListByBigId (int bigCategoryId){
+		    ArrayList<ProductVO> productList = new ArrayList<>();
+
+		    Connection conn = null;
+		    CallableStatement ctmt = null;
+
+		    try {
+		      conn = DBManager.getConnection();
+		      ctmt = conn.prepareCall("{ ? = call PRODUCT_LIST_PACKAGE.FN_GET_ALL_PROD(?) }");
+		      
+		      ctmt.registerOutParameter(1, OracleTypes.ARRAY,"PROD_TABLE");
+		      ctmt.setInt(2, bigCategoryId);
+		      ctmt.execute();	
+		      
+		      Array ts = ctmt.getArray(1);
+		      Object[] objArr = (Object[]) ts.getArray();
+		      
+		      for(int i=0;i<objArr.length;i++) {
+		    	  Object[] attrs = null;
+		    	  Struct bean = (Struct) objArr[i];
+		          attrs = bean.getAttributes();
+ 		    	  ProductVO product = new ProductVO();		        	
+
+ 		    	  List<Object> arr = Arrays.asList(attrs);
+ 		    	  System.out.println(arr);
+ 		    	  product.setId(Integer.parseInt(arr.get(0).toString()));
+ 		    	  product.setProdCategory(Integer.parseInt(arr.get(1).toString()));
+ 		    	  product.setProdName(String.valueOf(arr.get(2)));
+ 		    	  product.setProdDetail(String.valueOf(arr.get(3)));		        
+ 		    	  product.setPrice(Integer.parseInt(arr.get(4).toString()));
+ 		    	  product.setDiscount(Integer.parseInt(arr.get(5).toString()));
+ 		    	  product.setPackageType(String.valueOf(arr.get(6)));
+		          product.setOrigin(String.valueOf(arr.get(7)));
+		          product.setProdImg(String.valueOf(arr.get(8)));
+		          productList.add(product);
+	          }
+		      		      
+		      System.out.println("대분류에 해당하는 데이터 전체 조회 ");
+		      for(ProductVO p : productList) {
+		    	  System.out.println(p.toString());
+		      }
+		      
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    } finally {
+		      DBManager.close(conn, ctmt);
+		    }
+			return productList;
+	  }
+	  
 }

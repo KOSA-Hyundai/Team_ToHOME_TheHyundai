@@ -15,8 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CartDAO;
+
+import dao.CategoryDAO;
 import dao.MemberDAO;
 import dto.CartVO;
+import dto.BigCategoryDTO;
 import dto.MemberVO;
 import utill.AES128;
 import utill.Secret;
@@ -29,6 +32,8 @@ public class LoginAction implements Action {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
 		String pwd = null;
+	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
+	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
 		try {
 			pwd = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(request.getParameter("pw"));
 		} catch (InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | BadPaddingException
@@ -40,7 +45,7 @@ public class LoginAction implements Action {
 		MemberVO memberVO = memberDAO.getMember(email);
 		
 		if (memberVO != null) {
-			if (memberVO.getPw().equals(pwd)) { // ¾ÏÈ£ È®ÀÎ
+			if (memberVO.getPw().equals(pwd)) { // ï¿½ï¿½È£ È®ï¿½ï¿½
 				session.removeAttribute("email");
 				session.setAttribute("loginUser", memberVO);
 				CartDAO cartDAO = CartDAO.getInstance();
@@ -48,9 +53,10 @@ public class LoginAction implements Action {
 				ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getEmail());
 				int cartCount = cartList.size();
 				session.setAttribute("cartCount", cartCount);
-				url = "HyundaiServlet?command=main"; // ½ÃÀÛ ÆäÀÌÁö·Î
+				url = "HyundaiServlet?command=main"; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			}
 		}
+		request.setAttribute("menuCategoryList", menuCateogoryList);
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }

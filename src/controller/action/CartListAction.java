@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.CartDAO;
+import dao.CategoryDAO;
+import dto.BigCategoryDTO;
 import dto.CartVO;
 import dto.MemberVO;
 import dto.ProductInCartVO;
@@ -25,6 +27,8 @@ public class CartListAction implements Action {
 			CartDAO cartDAO = CartDAO.getInstance();
 			ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getEmail());
 			ArrayList<ProductInCartVO> picList = new ArrayList<>();
+		  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
+		  	ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
 			
 			ProductVO prod = new ProductVO();
 			int totalPrice = 0;
@@ -47,6 +51,7 @@ public class CartListAction implements Action {
 				System.out.println(p.getProdName());
 				totalPrice += p.getPrice();	
 			}
+			request.setAttribute("menuCategoryList", menuCateogoryList);
 			request.setAttribute("cartList", cartList);
 			request.setAttribute("prodInCartList", picList);
 			request.setAttribute("totalPrice", totalPrice);

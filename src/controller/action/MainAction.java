@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
+import dto.BigCategoryDTO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
@@ -22,16 +23,16 @@ public class MainAction implements Action {
 	  	ProductDAO productDAO = ProductDAO.getInstance();
 	  	
 	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
+	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	  	
 	  	ArrayList<ProductVO> productList = productDAO.productList(2);
 	  	ArrayList<ProductVO> productList2 = productDAO.productList(52);
 	  	
 	    request.setAttribute("categoryList", cateogoryList);
-	    
+	    request.setAttribute("menuCategoryList", menuCateogoryList);
 	    request.setAttribute("productList", productList);
 	    request.setAttribute("productList2", productList2);
-	    
-	  	
+	    	  	
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);
   }
