@@ -40,6 +40,7 @@ public class MainAction implements Action {
 	  	// 각각의 배열 리스트를 HttpServletrequest에 세팅
 	    request.setAttribute("categoryList", cateogoryList);
 	    request.setAttribute("menuCategoryList", menuCateogoryList);
+	    System.out.println(cateogoryList);
 	    request.setAttribute("productList", productList);
 	    request.setAttribute("productList2", productList2);
 	    

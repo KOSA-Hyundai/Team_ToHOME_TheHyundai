@@ -25,7 +25,6 @@ public class CategoryDAO {
 		return instance;
 	}
 	
-	// ī�װ� ��� ����ϴ� ��� 
 	public ArrayList<CategoryVO> listCategory(){
 		ArrayList<CategoryVO> categoryList = new ArrayList<CategoryVO>();
 		String sql = "select * from table(product_list_package.fn_category_prod)";
@@ -39,6 +38,7 @@ public class CategoryDAO {
 			rs = csmt.executeQuery();
 			while (rs.next()) {
 				CategoryVO category = new CategoryVO();
+				category.setBigId(Integer.parseInt(rs.getString("prod_big_id")));
 			    category.setBigCategory(rs.getString("prod_big_category"));
 			    	
 			    String[] smallCategory = rs.getString("prod_small_category").split(",");
