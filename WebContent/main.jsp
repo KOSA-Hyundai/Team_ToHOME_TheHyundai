@@ -59,8 +59,8 @@
 					<ul class="product-list big">
 						<c:forEach items="${productList}" var="productVO">
 							<li>
-								<a href="">
-									<span class="thumb"><img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
+								<a href="HyundaiServlet?command=product_detail&id=${productVO.id}">
+									<span class="thumb"><img src="${productVO.prodImg}" alt="HyundaiServlet?command=product_detail&id=${productVO.id}" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
 										<div class="badgewrap">
 											<c:choose> 
 												<c:when test="${productVO.discount != 0}">
@@ -103,7 +103,7 @@
 					<ul class="product-list big">
 						<c:forEach items="${productList2}" var="productVO">
 							<li>
-								<a href="">
+								<a href="HyundaiServlet?command=product_detail&id=${productVO.id}">
 									<span class="thumb"><img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
 										<div class="badgewrap">
 											<c:choose> 

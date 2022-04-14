@@ -86,7 +86,7 @@
 
 				  <c:forEach items="${productList}" var="productVO">
 					<li>
-						<a href="">						
+						<a href="HyundaiServlet?command=product_detail&id=${productVO.id}">						
 							<span class="thumb">
 								<img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
  								<div class="badgewrap">

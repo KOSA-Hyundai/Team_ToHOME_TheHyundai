@@ -10,8 +10,8 @@
 			<div class="innercon" id="reset_section">
 				<section class="list-filter">
     				<strong class="txt-total">
-    					<span class="word" id="titleName"><b>'<%= request.getParameter("productName") %>'</b></span> 검색결과 
-    					<em id="titleCnt">${fn:length(searchList)}</em>건</strong>
+    					<span class="word" id="titleName"><b style="color:orange; font-size:25px">'<%= request.getParameter("productName") %>'</b></span> 검색결과 
+    					<em id="titleCnt" style="color:black;">${fn:length(searchList)}</em>건</strong>
 				</section>			
 
 <!-- 				<section class="list-filter">
@@ -91,7 +91,7 @@
 
 				  <c:forEach items="${searchList}" var="productVO">
 					<li>
-						<a href="">						
+						<a href="HyundaiServlet?command=product_detail&id=${productVO.id}">						
 							<span class="thumb">
 								<img src="${productVO.prodImg}" alt="" onerror="this.src='/UIUX/m/pjtCom/images/common/noimage_350x420.jpg'">
  								<div class="badgewrap">
