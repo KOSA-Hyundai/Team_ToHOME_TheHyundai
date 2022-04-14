@@ -103,7 +103,8 @@
                 <!-- 가격(fnPDSetPriceSection)  -->
                 <div class="price" id="price_section">
                 <span class="txt-price">
-					<strong><em>${productList[0].price}</em>원</strong>
+					<strong><em><fmt:formatNumber value="${productList[0].price}"
+			                    		type="number" pattern="###,###" />	</em>원</strong>
 				</span>
                 </div>
 
@@ -147,7 +148,8 @@
         		<button type="button" class="btn-down" onclick="fnOptionEaDown(this);">수량 낮추기</button>
         		<button type="button" class="btn-up" onclick="fnOptionEaUp(this);">수량 올리기</button>
     </div>
-    		<span class="txt-price"><em>${productList[0].price}</em>원</span>
+    		<span class="txt-price"><em><fmt:formatNumber value="${productList[0].price}"
+			                    		type="number" pattern="###,###" /></em>원</span>
     	</div>
 	</div>
 </div>
@@ -158,7 +160,8 @@
                 <!-- buybutton 상단(p_popCartAdd) 작업중 // -->
                 <div class="buybutton" id="top_buybutton">
                   
-                            <p class="txt-total">총 금액 <strong><em>${productList[0].price}</em>원</strong></p>
+                            <p class="txt-total">총 금액 <strong><em><fmt:formatNumber value="${productList[0].price}"
+			                    		type="number" pattern="###,###" /></em>원</strong></p>
                         
                     <div class="btns">
 	                                                <button type="button" class="btn orange bigger btn-buy" onclick="fnPopupScaleOpenA(this, '#p_popCartAdd');">장바구니</button>
