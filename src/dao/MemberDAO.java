@@ -100,7 +100,6 @@ public class MemberDAO {
 		String runSP = "call MEMBER_PACKAGE.MEMBER_UPDATE(?, ?, ?, ?)";
 		Connection conn = null;
 		CallableStatement ctmt = null;
-		;
 
 		try {
 			conn = DBManager.getConnection();
