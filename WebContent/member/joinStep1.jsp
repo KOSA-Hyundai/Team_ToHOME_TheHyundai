@@ -49,7 +49,7 @@
                                     style="width: 560px; margin-top: 40px; margin-bottom: 50px;">신규회원 및 웰컴케어 가입
                             </button>
                         </section>
-                        <div style="border-top: 1px solid #dbd9d6;"></div>
+                        <div style="border-top: 1px solid #dbd9d6; width: 680px"></div>
                         <section class="member" style="margin-left: 60px; margin-top: 30px;">
                             <img src="images/common/tohome.png" alt="tohome" height="70px !important"/>
                             <p class="hpoint">현대식품관 일반회원</p>
