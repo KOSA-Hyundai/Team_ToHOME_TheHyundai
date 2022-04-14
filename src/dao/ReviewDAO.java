@@ -32,7 +32,8 @@ public class ReviewDAO {
 
 	public ArrayList<ReviewDTO> listReviews(int prod_id) {
 		ArrayList<ReviewDTO> reviewsList = new ArrayList<ReviewDTO>();
-		String sql = "select * from review r join member m on r.user_id = m.id where r.prod_id = ?";
+		// order by Ãß°¡
+		String sql = "select * from review r join member m on r.user_id = m.id where r.prod_id = ? order by create_date desc";
 		Connection conn = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
