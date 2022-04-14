@@ -14,28 +14,28 @@ try {
 	DataSource ds = (DataSource) envContext.lookup("jdbc/oracle");
 	con = ds.getConnection();
 	ResultSet rs = null;
-	List productDetails = new LinkedList();
+	List genderList = new LinkedList();
 	JSONObject responseObj = new JSONObject();
 
-	String query = "SELECT BC.CTGR_NAME, COUNT(BC.CTGR_NAME) CNT FROM PRODUCT P JOIN SMALL_CATEGORY SC ON P.PROD_CATEGORY = SC.ID JOIN BIG_CATEGORY BC ON SC.BIG_CATEGORY_ID = BC.ID GROUP BY BC.CTGR_NAME ORDER BY COUNT(BC.CTGR_NAME)";
+	String query = "select gender, count(*) cnt from member group by gender";
 	PreparedStatement pstm = con.prepareStatement(query);
 
 	rs = pstm.executeQuery();
 	JSONObject empObj = null;
 
 	while (rs.next()) {
-		String bigCategory = rs.getString("ctgr_name");
+		String gender = rs.getString("gender");
 		int cnt = rs.getInt("cnt");
 		empObj = new JSONObject();
-		empObj.put("bigCategory", bigCategory);
+		empObj.put("gender", gender);
 		empObj.put("cnt", cnt);
-		productDetails.add(empObj);
+		genderList.add(empObj);
 	}
 	rs.close();
 	pstm.close();
 	con.close();
 	
-	responseObj.put("productDetails", productDetails);
+	responseObj.put("genderList", genderList);
 	out.print(responseObj.toString());
 } catch (Exception e) {
 	e.printStackTrace();

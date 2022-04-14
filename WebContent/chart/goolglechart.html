@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
 <head>
       <title>Google Chart with jsp Mysql Json</title>
@@ -65,5 +65,64 @@
  </script>
  <input type="button" value="대분류별 상품 개수 차트 출력" onclick="CallChart();"></input>
  <div id="chart_div"></div>
+ 
+ 
+  <script type="text/javascript">
+ 	//db 데이터 저장 객체
+     var queryObject="";
+ 	//db 데이터 저장 객체 객수 저장
+     var queryObjectLen="";
+     
+      //구글 그래프 그리기 시작
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart2() {
+           var data = new google.visualization.DataTable();
+           data.addColumn('string', 'gender');
+           data.addColumn('number', 'cnt');                     
+      
+           for(var i=0 ; i < queryObjectLen ; i++ ) {
+        	   	 var gender = queryObject.genderList[i].gender
+        	   	 if(gender=='F')gender="여성";
+        	   	 else if(gender=='M') gender="남성";
+        	   	 else gender="입력하지 않음";
+                 var cnt = queryObject.genderList[i].cnt;
+                 data.addRows([
+                     [ gender, parseInt(cnt)]
+                    ] );
+           }
+           
+  
+    		var barchart_options = {title:'사용자 성비',
+                       width:700,
+                       height:300};
+        var barchart = 
+        	new google.visualization.BarChart(document.getElementById('barchart_div'));
+        barchart.draw(data, barchart_options);
+ 		}//drawChart() end 그래프 그리기 끝
+ 		
+ 	     function CallChart2(){
+ 	    	 $.ajax({
+ 	             type : 'POST',
+ 	             url : 'getdata2.jsp',
+ 	             dataType:'json',
+ 	             contentType: 'aplication/json',
+ 	             success : function(data) {
+ 	                      queryObject = eval('(' + JSON.stringify(data) + ')');
+ 	                      queryObjectLen = queryObject.genderList.length;
+ 	                      console.log(queryObject);
+ 	                      drawChart2();
+ 	                  },
+ 	            error : function(xhr, type) {
+ 	               alert('server error occoured')
+ 	                  }
+ 	         });//ajax 데이터 로드 끝 
+ 	     }
+
+ </script>
+ <input type="button" value="사용자 남녀 성비" onclick="CallChart2();"></input>
+ <div id="barchart_div"></div>
+ 
  </body>
  </html>
