@@ -197,7 +197,7 @@
 
                     <!-- 리뷰 리스트 -->
                     <div class="review-list">
-                    <a href="/HyundaiServlet?command=product_detail&id=${productVO.id}
+                    <a href="/HyundaiServlet?command=product_detail&id=${productVO.id}"></a>
                     <c:forEach var="rev" items="${reviewList}">
                     <ul>
 	<li data-no="" data-wrt-id="" data-ord-no="" data-slitm-cd="" data-opt-cd="" data-img-path="" data-contents="" data-img-path1="" data-img-path2="" data-img-path3="" data-slitm-nm="" data-slitm-desc="" data-atfl-no="" data-scrg="">
