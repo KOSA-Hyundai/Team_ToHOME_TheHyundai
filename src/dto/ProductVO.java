@@ -1,15 +1,16 @@
 package dto;
 
+// 작성자 : 정예성
 public class ProductVO {
-	private int id;          //대분류ID
+	private int id;             // 대분류ID
 	private int prodCategory;   // 소분류ID 
-	private String prodName;    //상품이름 
-	private String prodDetail;  //상품 상세정보 
-	private int price;          //상품가격 
-	private int discount;       //할인 
-	private String packageType; //보관방법 
-	private String origin;      //원산지
-	private String prodImg;     //제품 이미지 경로
+	private String prodName;    // 상품이름 
+	private String prodDetail;  // 상품 상세정보 
+	private int price;          // 상품가격 
+	private int discount;       // 할인 
+	private String packageType; // 보관방법 
+	private String origin;      // 원산지
+	private String prodImg;     // ㄴ제품 이미지 경로
 	
 	public int getId() {
 		return id;
