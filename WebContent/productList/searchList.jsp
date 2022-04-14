@@ -14,7 +14,7 @@
     					<em id="titleCnt">${fn:length(searchList)}</em>건</strong>
 				</section>			
 
-				<section class="list-filter">
+<!-- 				<section class="list-filter">
 	                <strong class="txt-total"></strong>
 	                <div class="filter-wrapper">
 		                <div class="shipping-select active" onchange="fnAddItemList('N');">
@@ -31,7 +31,7 @@
 		                                    판매량, 사용자 선호도 등을 고려해 상품을 추천해 드리며, 일부 광고상품이 상단에 노출될 수 있습니다.
 		                                </div>
 		                            </div>
-		                            <button type="button" class="active" onclick="GA_Event('PC_카테고리','정렬방식','정렬_추천순'); fnSortType('A');">추천순</button><!-- 활성화 : class="active" 추가 -->
+		                            <button type="button" class="active" onclick="GA_Event('PC_카테고리','정렬방식','정렬_추천순'); fnSortType('A');">추천순</button>활성화 : class="active" 추가
 		                        </li>
 		                        <li><button type="button" onclick="GA_Event('PC_카테고리','정렬방식','정렬_인기상품순'); fnSortType('B');">인기상품순</button></li>
 		                        <li><button type="button" onclick="GA_Event('PC_카테고리','정렬방식','정렬_신상품순'); fnSortType('C');">신상품순</button></li>
@@ -42,10 +42,10 @@
 		                </div>
 		            </div>
 	
-	             <!-- filternav// -->
+	             filternav//
 	             <div class="filternav">
 	                 <div class="scrollbox">
-	                     <!--혜택  -->
+	                     혜택 
 	                     
 	                     <div class="price">
 	                         <strong class="ti">가격</strong>
@@ -63,9 +63,9 @@
 	                             <span class="txt-won">원</span>
 	                         </div>
 	                     </div>
-	                     <!--브랜드  -->
+	                     브랜드 
 	                     
-	                     <!--배송  -->
+	                     배송 
 	                     <div class="delivery">
 	                         <strong class="ti">배송구분</strong>
 	                         <div class="con">
@@ -86,7 +86,7 @@
 	                <button type="button" class="btn small black btn-reset" onclick="fn.filterNavReset();">초기화</button>
 	            </div>
 	            </section>
-
+ -->
 				<ul class="product-list" id="ulItemList">
 
 				  <c:forEach items="${searchList}" var="productVO">

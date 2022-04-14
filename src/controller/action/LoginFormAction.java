@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 
 public class LoginFormAction implements Action {
 
@@ -18,7 +18,7 @@ public class LoginFormAction implements Action {
     String url = "member/login.jsp";       
   	CategoryDAO categoryDAO = CategoryDAO.getInstance();
 
-  	ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+  	ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 
   	request.setAttribute("menuCategoryList", menuCateogoryList);
     RequestDispatcher dispatcher=request.getRequestDispatcher(url);

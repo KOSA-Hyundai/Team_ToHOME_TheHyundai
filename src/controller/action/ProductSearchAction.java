@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
@@ -34,8 +34,8 @@ public class ProductSearchAction implements Action {
 	    // 헤더 카테고리 출력 
 	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	    
-	  	// 헤더 카테고리 출력 
-	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+	  	// 헤더 카테고리 출력 	    
+	    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	    
 	    // 검색한 상품이름을 파라미터로 전달하여 검색 결과 상품 리스트를 담은 배열리스트 선언 
 	    ArrayList<ProductVO> searchList = productDAO.searchList(productName);	 

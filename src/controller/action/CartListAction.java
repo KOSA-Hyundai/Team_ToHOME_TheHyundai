@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.CartDAO;
 import dao.CategoryDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CartVO;
 import dto.MemberVO;
 import dto.ProductInCartVO;
@@ -28,7 +28,7 @@ public class CartListAction implements Action {
 			ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getEmail());
 			ArrayList<ProductInCartVO> picList = new ArrayList<>();
 		  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
-		  	ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+		  	ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 			
 			ProductVO prod = new ProductVO();
 			int totalPrice = 0;

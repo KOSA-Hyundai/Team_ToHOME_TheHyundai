@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import dao.ProductListDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
-import dto.SmallCategoryDTO;
+import dto.SmallCategoryVO;
 
 public class ProductListAction implements Action {
 	
@@ -31,24 +31,24 @@ public class ProductListAction implements Action {
 
 	    String sortType = request.getParameter("sortType");
 
-	    BigCategoryDTO bigCategory = null;
-	    SmallCategoryDTO smallCategory = null;
+	    BigCategoryVO bigCategory = null;
+	    SmallCategoryVO smallCategory = null;
 	    ProductListDAO productListDAO = ProductListDAO.getInstance();
 	    CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	    ArrayList<ProductVO> productList = productListDAO.listProduct(smallCategoryId);	    	  	
-	    ArrayList<BigCategoryDTO> cateogoryList = categoryDAO.getCategoryInfo();
+	    ArrayList<BigCategoryVO> cateogoryList = categoryDAO.getCategoryInfo();
 
 	    if(smallCategoryId == -1) {
 	    	productList = productListDAO.getProductListByBigId(bigCategoryId);	    	
-	    	for(BigCategoryDTO bc : cateogoryList) {
+	    	for(BigCategoryVO bc : cateogoryList) {
 	    		if(bc.getId() == bigCategoryId) {
 	    			bigCategory = bc;
 	    			break;
 	    		}
 	    	}		    		    	
 	    }else {
-	    	for(BigCategoryDTO bc : cateogoryList) {
-	    		for(SmallCategoryDTO sc : bc.getSmallCategoryList()) {
+	    	for(BigCategoryVO bc : cateogoryList) {
+	    		for(SmallCategoryVO sc : bc.getSmallCategoryList()) {
 	    			if(sc.getId() == smallCategoryId) {
 	    				bigCategory = bc;
 	    				smallCategory = sc;

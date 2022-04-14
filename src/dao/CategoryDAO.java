@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import utill.DBManager;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
-import dto.SmallCategoryDTO;
+import dto.SmallCategoryVO;
 import oracle.jdbc.internal.OracleTypes;
 
 public class CategoryDAO {
@@ -25,7 +25,7 @@ public class CategoryDAO {
 		return instance;
 	}
 	
-	// Ä«Å×°í¸® ¸ñ·Ï Ãâ·ÂÇÏ´Â ±â´É 
+	// Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ 
 	public ArrayList<CategoryVO> listCategory(){
 		ArrayList<CategoryVO> categoryList = new ArrayList<CategoryVO>();
 		String sql = "select * from table(product_list_package.fn_category_prod)";
@@ -56,13 +56,13 @@ public class CategoryDAO {
 		return categoryList;
 		}
 	
-	public ArrayList<BigCategoryDTO> getCategoryInfo() {
+	public ArrayList<BigCategoryVO> getCategoryInfo() {
 		
 		String sql = "{ ? = call PRODUCT_LIST_PACKAGE.FN_GET_CATEGORY_INFO}";
 		Connection conn = null;
 		CallableStatement csmt = null;
-		HashMap<Integer, BigCategoryDTO> categoryMap = new HashMap<>();
-	    ArrayList<BigCategoryDTO> categoryList = null;
+		HashMap<Integer, BigCategoryVO> categoryMap = new HashMap<>();
+	    ArrayList<BigCategoryVO> categoryList = null;
 		
 		try {
 			conn = DBManager.getConnection();
@@ -85,9 +85,9 @@ public class CategoryDAO {
 		    	  String bigCtryName = String.valueOf(arr.get(2));
 		    	  String smallCtryName = String.valueOf(arr.get(3));
 		    	  
-		    	  SmallCategoryDTO smallCategoryDTO = new SmallCategoryDTO(smallCategoryId, smallCtryName);
+		    	  SmallCategoryVO smallCategoryDTO = new SmallCategoryVO(smallCategoryId, smallCtryName);
 		    	  if(!categoryMap.containsKey(bigCategoryId)) {		    		  
-		    		  BigCategoryDTO bigCategoryDTO = new BigCategoryDTO(bigCategoryId, bigCtryName);
+		    		  BigCategoryVO bigCategoryDTO = new BigCategoryVO(bigCategoryId, bigCtryName);
 		    		  categoryMap.put(bigCategoryId, bigCategoryDTO);
 		    	  }
 		    	  categoryMap.get(bigCategoryId).addSmallCategory(smallCategoryDTO);  	        

@@ -19,7 +19,7 @@ import dao.CartDAO;
 import dao.CategoryDAO;
 import dao.MemberDAO;
 import dto.CartVO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.MemberVO;
 import utill.AES128;
 import utill.Secret;
@@ -33,7 +33,7 @@ public class LoginAction implements Action {
 		String email = request.getParameter("email");
 		String pwd = null;
 	  	CategoryDAO categoryDAO = CategoryDAO.getInstance();
-	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+	    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 		try {
 			pwd = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(request.getParameter("pw"));
 		} catch (InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | BadPaddingException

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
-import dto.BigCategoryDTO;
+import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
@@ -30,9 +30,8 @@ public class MainAction implements Action {
 	  	
 	  	// 카테고리 리스트를 배열리스트에 담아준다. 
 	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
-	  	
-	  	// 카테고리 리스트를 배열리스트에 담아준다. 
-	    ArrayList<BigCategoryDTO> menuCateogoryList = categoryDAO.getCategoryInfo();
+
+	    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	  	
 	    // 메인화면에 특정 대분류 상품을 배열 리스트에 담아준다.
 	  	ArrayList<ProductVO> productList = productDAO.productList(2);
