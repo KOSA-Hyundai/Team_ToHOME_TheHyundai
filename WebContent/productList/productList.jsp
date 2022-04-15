@@ -3,7 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../productListHeader.jsp" %>  
  <article>
-	<!-- 새벽배송 공통 js -->
+<!-- 
+작성자 : 유지훈 
+상품 리스트 페이지
+ -->
 	<div id="wrap2" class="product category" >
 
 		<div id="contents" style = "padding-top: 0px;">
@@ -79,15 +82,7 @@
 	                     </div>
 	                     <!--브랜드  -->
 	                     
-	                     <!--배송  -->
-<!-- 	                     <div class="delivery">
-	                         <strong class="ti">배송구분</strong>
-	                         <div class="con">
-	                             <label><input type="radio" name="delivery" data-active-ti="deliverydiv" value="C"><span>정기배송</span></label>
-	                             <label><input type="radio" name="delivery" data-active-ti="deliverydiv" value="D"><span>예약배송</span></label>
-	                         </div>
-	                     </div>
- -->	                 </div>
+	                 </div>
 	
 	                <div class="btns">
 	                    <button type="button" class="btn black btn-reset" onclick="fn.filterNavReset();">초기화</button>

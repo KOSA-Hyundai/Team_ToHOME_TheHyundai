@@ -67,12 +67,7 @@ public class ProductListDAO {
 		          product.setOrigin(String.valueOf(arr.get(7)));
 		          product.setProdImg(String.valueOf(arr.get(8)));
 		          productList.add(product);
-  	          }
-		      		      
-		      for(ProductVO p : productList) {
-		    	  System.out.println(p.toString());
-		      }
-		      
+  	          }		      
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    } finally {

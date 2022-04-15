@@ -33,7 +33,8 @@ public class ProductListAction implements Action {
 	    int bigCategoryId = Integer.parseInt(request.getParameter("bigCtryId"));
 
 	    // 소분류의 아이디값을 가져온다. 그리고 NULL값이거나 빈문자열의 경우 임의로 -1 값을 넣어서 분기 처리를 하도록 하였다.
-	    int smallCategoryId = request.getParameter("smallCtryId") != null && !request.getParameter("smallCtryId").equals("") ? Integer.parseInt(request.getParameter("smallCtryId")) : -1;
+	    int smallCategoryId = request.getParameter("smallCtryId") != null &&
+	    		!request.getParameter("smallCtryId").equals("") ? Integer.parseInt(request.getParameter("smallCtryId")) : -1;
 
 	    // 필터링 기능중 정렬방식에 대한 값을 String으로 받아온다.
 	    String sortType = request.getParameter("sortType");
