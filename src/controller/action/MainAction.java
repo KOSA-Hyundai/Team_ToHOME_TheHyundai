@@ -29,8 +29,6 @@ public class MainAction implements Action {
 	  	ProductDAO productDAO = ProductDAO.getInstance();
 	  	
 	  	// 카테고리 리스트를 배열리스트에 담아준다. 
-	  	ArrayList<CategoryVO> cateogoryList = categoryDAO.listCategory();
-
 	    ArrayList<BigCategoryVO> menuCateogoryList = categoryDAO.getCategoryInfo();
 	  	
 	    // 메인화면에 특정 대분류 상품을 배열 리스트에 담아준다.
@@ -38,7 +36,6 @@ public class MainAction implements Action {
 	  	ArrayList<ProductVO> productList2 = productDAO.productList(52);
 	  	
 	  	// 각각의 배열 리스트를 HttpServletrequest에 세팅
-	    request.setAttribute("categoryList", cateogoryList);
 	    request.setAttribute("menuCategoryList", menuCateogoryList);
 	    request.setAttribute("productList", productList);
 	    request.setAttribute("productList2", productList2);

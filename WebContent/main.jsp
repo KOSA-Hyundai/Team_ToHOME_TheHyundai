@@ -52,7 +52,7 @@
 	
 	<!-- //상품 미리보기 1 -->
 	<section class="innercon category aos-init" data-aos="fade-up">
-		<h2><strong style="color:;font-weight:">${categoryList[7].bigCategory}</strong><a href="HyundaiServlet?command=productList&bigCtryId=${categoryList[7].bigId}&smallCtryId&sortType" onclick="" class="btn all">${categoryList[7].bigCategory} 전체보기</a></h2>
+		<h2><strong style="color:;font-weight:">${menuCategoryList[0].bigCategory}</strong><a href="HyundaiServlet?command=productList&bigCtryId=${menuCategoryList[0].id}&smallCtryId&sortType" onclick="" class="btn all">${categoryList[0].bigCategory} 전체보기</a></h2>
 		<div class="swiper-container categoryswiper swiper-container-horizontal swiper-container-autoheight">
 			<div class="swiper-wrapper" style="height: 331px; transform: translate3d(0px, 0px, 0px);">
 				<div class="swiper-slide" style="width: 1204px; margin-right: 10px;">
@@ -96,7 +96,7 @@
 	
 	<!-- //상품 미리보기 2 -->
 	<section class="innercon category aos-init" data-aos="fade-up">
-		<h2><strong style="color:;font-weight:">${categoryList[41].bigCategory}</strong><a href="HyundaiServlet?command=productList&bigCtryId=${categoryList[41].bigId}&smallCtryId&sortType" onclick="" class="btn all">${categoryList[41].bigCategory} 전체보기</a></h2>
+		<h2><strong style="color:;font-weight:">${menuCategoryList[4].bigCategory}</strong><a href="HyundaiServlet?command=productList&bigCtryId=${menuCategoryList[4].id}&smallCtryId&sortType" onclick="" class="btn all">${menuCategoryList[4].bigCategory} 전체보기</a></h2>
 		<div class="swiper-container categoryswiper swiper-container-horizontal swiper-container-autoheight">
 			<div class="swiper-wrapper" style="height: 331px; transform: translate3d(0px, 0px, 0px);">
 				<div class="swiper-slide" style="width: 1204px; margin-right: 10px;">
