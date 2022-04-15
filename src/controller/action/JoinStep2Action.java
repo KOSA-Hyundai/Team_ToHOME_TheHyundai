@@ -5,7 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 // 작성자 : 고정민 
 // 기능 : (H.Point회원가입과 일반 회원가입 중 일반 회원가입)으로 넘어감
 public class JoinStep2Action implements Action {
