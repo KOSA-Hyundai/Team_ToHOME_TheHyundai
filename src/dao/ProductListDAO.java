@@ -111,7 +111,7 @@ public class ProductListDAO {
 		          productList.add(product);
 	          }
 		      		      
-		      System.out.println("대분류에 해당하는 데이터 전체 조회 ");
+		      System.out.println("��遺�瑜��� �대�뱁���� �곗�댄�� ��泥� 議고�� ");
 		      for(ProductVO p : productList) {
 		    	  System.out.println(p.toString());
 		      }

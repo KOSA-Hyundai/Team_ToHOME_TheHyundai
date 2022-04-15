@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import dao.CategoryDAO;
 import dto.BigCategoryVO;
 
+
+// 작성자 : 고정민
+// 기능 : 로그인 페이지로 이동
 public class LoginFormAction implements Action {
 
   @Override

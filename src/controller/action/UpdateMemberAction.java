@@ -5,6 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// 작성자 : 고정민
+// 기능 : 회원 정보 변경 페이지로 이동
 public class UpdateMemberAction implements Action {
 
   @Override

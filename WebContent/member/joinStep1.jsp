@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../header.jsp" %>
+<!-- 
+작성자 : 고정민
+H.Point 통합 회원 가입과 일반 회원가입을 나누는 페이지
+ -->
 <title>회원 가입</title>
 <style>
     .container {

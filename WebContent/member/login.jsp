@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../header.jsp" %>
-
+<!-- 
+작성자 : 고정민
+로그인 페이지
+아이디 저장 기능을 구현 (쿠키 값 설정)
+ -->
 <title>로그인</title>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -1,13 +1,15 @@
 package dto;
 
+// 작성자 : 고정민
+// 회원 정보를 담은 VO
 public class MemberVO {
-    private String email;
-    private String name;
-    private String pw;
-    private String phone_number;
-    private String birth;
-    private String gender;
-    private String address;
+    private String email; // 이메일 
+    private String name; // 이름 
+    private String pw; // 비밀번호 
+    private String phone_number; // 전화번호
+    private String birth; // 생년월일
+    private String gender; // 성별 
+    private String address; // 주소
 
     public String getEmail() {
         return email;

@@ -14,6 +14,8 @@ import dto.MemberVO;
 import oracle.jdbc.OracleTypes;
 import utill.DBManager;
 
+// 작성자 : 고정민
+// 기능 : 회원과 관련된 기능을 처리
 public class MemberDAO {
 	private MemberDAO() {
 	}
@@ -24,8 +26,10 @@ public class MemberDAO {
 		return instance;
 	}
 
+	// 회원가입 기능
 	public void insertMember(MemberVO memberVO) {
-
+		
+		// 전달받은 memberVO 값을 member_join 프로시저에 입력값으로 넣음
 		String runSP = "call MEMBER_PACKAGE.MEMBER_JOIN(?, ?, ?, ?, ?, ?, ?)";
 		Connection conn = null;
 		CallableStatement callableStatement = null;
@@ -52,6 +56,7 @@ public class MemberDAO {
 		}
 	}
 
+	// 회원의 정보를 조회하는 기능 (로그인과 회원정보 수정 시 필요)
 	public MemberVO getMember(String email) {
 
 		MemberVO memberVO = new MemberVO();
@@ -61,8 +66,10 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			conn = DBManager.getConnection();
+			
+			// 회원의 정보를 가져올 FN_GET_MEMBER_INFO 함수를 호출하는 쿼리
 			ctmt = conn.prepareCall("{?= call member_package.fn_get_member_info(?)}");
-			ctmt.registerOutParameter(1, OracleTypes.ARRAY, "MEMBER_TABLE");
+			ctmt.registerOutParameter(1, OracleTypes.ARRAY, "MEMBER_TABLE"); // 출력값을 테이블 형식으로 지정
 			ctmt.setString(2, email);
 			ctmt.execute();
 			Array ts = ctmt.getArray(1);
@@ -95,8 +102,9 @@ public class MemberDAO {
 		return memberVO;
 	}
 
+	// 회원 정보 수정 기능
 	public void updateMember(MemberVO memberVO) {
-
+		// 회원 정보 수정을 처리할 MEMBER_UPDATE 프로시저를 호출하는 쿼리
 		String runSP = "call MEMBER_PACKAGE.MEMBER_UPDATE(?, ?, ?, ?)";
 		Connection conn = null;
 		CallableStatement ctmt = null;

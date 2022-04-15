@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- 
+작성자 : 고정민
+로그인된 사용자의 장바구니 목록을 조회하는 페이지
+ -->
 <%@ include file="../header.jsp" %>
 			<div id="contents">
 				<div class="innercon">
