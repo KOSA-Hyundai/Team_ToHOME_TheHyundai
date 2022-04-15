@@ -15,16 +15,20 @@ import oracle.jdbc.internal.OracleCallableStatement;
 import oracle.jdbc.internal.OracleTypes;
 import utill.DBManager;
 
+//ÀÛ¼ºÀÚ : À¯ÁöÈÆ
+// ±â´É : ´ëºĞ·ù, ¼ÒºĞ·ù °ª¿¡ µû¸¥ »óÇ° ¸®½ºÆ® Á¶È¸ ±â´É 
 public class ProductListDAO {
 
 	  private ProductListDAO() {  } 
 
+	  // ½Ì±ÛÅæ ÆĞÅÏÀ¸·Î °´Ã¼¸£ °ü¸®ÇÏ¿´´Ù.
 	  private static ProductListDAO instance = new ProductListDAO();
 
 	  public static ProductListDAO getInstance() {
 	    return instance;
 	  }  
 
+	  // ¼ÒºĞ·ù ¾ÆÀÌµğ·Î ÇØ´çÇÏ´Â »óÇ° ¸®½ºÆ®¸¦ Á¶È¸ÇÏ´Â ±â´É 
 	  public ArrayList<ProductVO> listProduct(int smallCategoryId) {	  
 		    ArrayList<ProductVO> productList = new ArrayList<>();
 
@@ -33,12 +37,15 @@ public class ProductListDAO {
 
 		    try {
 		      conn = DBManager.getConnection();
+
+		   	  // ÆĞÅ°ÁöÀÇ Table FunctionÀ» È°¿ë
 		      ctmt = conn.prepareCall("{ ? = call PRODUCT_LIST_PACKAGE.FN_GET_PROD(?) }");
 		      
 		      ctmt.registerOutParameter(1, OracleTypes.ARRAY,"PROD_TABLE");
 		      ctmt.setInt(2, smallCategoryId);
 		      ctmt.execute();	
 		      
+		      // Array °´Ã¼·Î ¹Ş¾Æ¼­ »óÇ° ¸®½ºÆ® °ªÀ» ³Ö¾îÁÖ¾ú´Ù.
 		      Array ts = ctmt.getArray(1);
 		      Object[] objArr = (Object[]) ts.getArray();
 		      
@@ -74,6 +81,7 @@ public class ProductListDAO {
 	        return productList;
 	  }    
 
+	  // ´ëºĞ·ù ¾ÆÀÌµğ¿¡ ÇØ´çÇÏ´Â »óÇ° ¸®½ºÆ®¸¦ Á¶È¸ÇÏ´Â ±â´É  
 	  public ArrayList<ProductVO> getProductListByBigId (int bigCategoryId){
 		    ArrayList<ProductVO> productList = new ArrayList<>();
 
@@ -82,12 +90,15 @@ public class ProductListDAO {
 
 		    try {
 		      conn = DBManager.getConnection();
+
+		   	  // ÆĞÅ°ÁöÀÇ Table FunctionÀ» È°¿ë
 		      ctmt = conn.prepareCall("{ ? = call PRODUCT_LIST_PACKAGE.FN_GET_ALL_PROD(?) }");
 		      
 		      ctmt.registerOutParameter(1, OracleTypes.ARRAY,"PROD_TABLE");
 		      ctmt.setInt(2, bigCategoryId);
 		      ctmt.execute();	
 		      
+		      // Array °´Ã¼·Î ¹Ş¾Æ¼­ »óÇ° ¸®½ºÆ® °ªÀ» ³Ö¾îÁÖ¾ú´Ù.
 		      Array ts = ctmt.getArray(1);
 		      Object[] objArr = (Object[]) ts.getArray();
 		      
@@ -111,7 +122,6 @@ public class ProductListDAO {
 		          productList.add(product);
 	          }
 		      		      
-		      System.out.println("ï¿½ï¿½éºï¿½ç‘œï¿½ï¿½ï¿½ ï¿½ëŒ€ï¿½ë±ï¿½ï¿½ï¿½ï¿½ ï¿½ê³—ï¿½ëŒ„ï¿½ï¿½ ï¿½ï¿½ï§£ï¿½ è­°ê³ ï¿½ï¿½ ");
 		      for(ProductVO p : productList) {
 		    	  System.out.println(p.toString());
 		      }

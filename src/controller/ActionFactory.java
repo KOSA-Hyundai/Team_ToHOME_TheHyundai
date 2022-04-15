@@ -2,14 +2,18 @@ package controller;
 
 import controller.action.*;
 
+//작성자 : 유지훈 
+//기능 : servlet으로 넘어온 Command값에 따라 맵핑해주어 객체를 생성해주는 역할을 한다.  
 public class ActionFactory {
   
+	// 싱글톤 패턴을 적용시키기 위해 instance를 하나만 생성하여 관리하였다.
     private static ActionFactory instance = new ActionFactory();
 
     private ActionFactory() {
         super();
     }
 
+    // getInstance으로 생성된 하나의 객체를 가져와 사용할 수 있다.
     public static ActionFactory getInstance() {
         return instance;
     }
