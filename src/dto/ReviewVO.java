@@ -2,20 +2,21 @@ package dto;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class ReviewDTO {
+// 작성자 : 김연식 
+public class ReviewVO {
 	
-	private int id;
-	private int user_id;
-	private int prod_id;
-	private String contents;
-	private String score;
-	private Timestamp create_date;
-	private String name;
-	public ReviewDTO() {
+	private int id;                 // 리뷰 고유 ID 
+	private int user_id;            // 유저 ID 
+	private int prod_id;            // 상품 ID 
+	private String contents;        // 리뷰 내용 
+	private String score;           // 상품 평점 
+	private Timestamp create_date;  // 작성 일자 
+	private String name;            // 작성자 이름
+	
+	public ReviewVO() {
 		super();
 	}
-	
-	public ReviewDTO(int id, int user_id, int prod_id, String contents, String score, Timestamp create_date, String name) {
+	public ReviewVO(int id, int user_id, int prod_id, String contents, String score, Timestamp create_date, String name) {
 		super();
 		this.id = id;
 		this.user_id = user_id;

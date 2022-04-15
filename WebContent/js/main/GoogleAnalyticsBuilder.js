@@ -1,6 +1,7 @@
 /*
 * Description : GA360 공통
 * Date : 2022.01.12
+* tohome.thehyundai.com에서 인용하였습니다.
 * */
 
 var AndroidWebview = 'GA_Android';											// Android userAgent

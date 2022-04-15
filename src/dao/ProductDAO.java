@@ -57,6 +57,8 @@ public class ProductDAO {
 	// 메인 페이지 상품 검색 기능 
 	public ArrayList<ProductVO> searchList(String name){
 		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+		
+		// 상품 이름을 파라미터로 받아 해당 문자열이 포함된 상품 출력하는 쿼리
 		String sql = "SELECT ID, PROD_CATEGORY, PROD_NAME, PROD_DETAIL, PRICE, DISCOUNT, PACKAGE_TYPE, ORIGIN, PROD_IMG FROM TABLE(PRODUCT_LIST_PACKAGE.FN_SEARCH_PROD(?))";
 		Connection conn = null;
 		CallableStatement csmt = null;
@@ -133,8 +135,11 @@ public class ProductDAO {
 		return productList;
 	}
 	
+	// 상품 상세 정보 출력하는 기능
 	public ArrayList<ProductVO> detailList(int id){
 	      ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+	      
+	      // 선텍한 상품의 ID(pk)를 파라미터로 전달하여 해당 상품의 상세정보를 출력하는 PL/SQL Function (Tablefunction 사용) 
 	      String sql = "SELECT * FROM TABLE(PRODUCT_LIST_PACKAGE.FN_DETAIL_PROD(?))";
 	      Connection conn = null;
 	      CallableStatement csmt = null;

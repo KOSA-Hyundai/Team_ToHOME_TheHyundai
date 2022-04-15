@@ -1,18 +1,14 @@
 package dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.sql.Types;
 import java.util.ArrayList;
-import java.util.List;
 
-import dto.ReviewDTO;
+import dto.ReviewVO;
 import utill.DBManager;
 
+// 작성자 : 김연식
 public class ReviewDAO {
 	public ReviewDAO() {
 	}
@@ -23,15 +19,9 @@ public class ReviewDAO {
 		return reviewDAO;
 	}
 
-	/*
-	 * public void addReview(ReviewDTO review) { reviewDAO.insertReview(review); }
-	 * 
-	 * public ReviewDTO viewReview(int id) { ReviewDTO review = null; review =
-	 * reviewDAO.selectReview(id); return review; }
-	 */
-
-	public ArrayList<ReviewDTO> listReviews(int prod_id) {
-		ArrayList<ReviewDTO> reviewsList = new ArrayList<ReviewDTO>();
+	// 상품 리뷰 조회하는 기능
+	public ArrayList<ReviewVO> listReviews(int prod_id) {
+		ArrayList<ReviewVO> reviewsList = new ArrayList<ReviewVO>();
 		String sql = "select * from review r join member m on r.user_id = m.id where r.prod_id = ?";
 		Connection conn = null;
 		ResultSet rs = null;
@@ -42,7 +32,7 @@ public class ReviewDAO {
 			pstmt.setInt(1, prod_id);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				ReviewDTO review = new ReviewDTO();
+				ReviewVO review = new ReviewVO();
 				review.setId(rs.getInt("id"));
 				review.setUser_id(rs.getInt("user_id"));
 				review.setProd_id(rs.getInt("prod_id"));
@@ -61,28 +51,27 @@ public class ReviewDAO {
 	}
 
 	
-	  public void insertReview(ReviewDTO review) { //DTO 전달받아 입력 프로시저 실행, DTO 전달 후 소멸 
-		  String sql = "insert into review(user_id, prod_id, name, contents, score) values(?, ?, ?, ?, ?)";
-		  Connection conn = null; 
-		  ResultSet rs = null; 
-		  PreparedStatement pstmt = null;
- 
-		  try {
-				conn = DBManager.getConnection();
-				pstmt = conn.prepareCall(sql);
-				pstmt.setInt(1, review.getUser_id());
-				pstmt.setInt(2, review.getProd_id());
-				pstmt.setString(3, review.getName());
-				pstmt.setString(4, review.getContents()); 
-				pstmt.setString(5,review.getScore()); 
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(conn, pstmt, rs);
-			}
-	  } 
-
+//	  public void insertReview(ReviewDTO review) { //DTO 전달받아 입력 프로시저 실행, DTO 전달 후 소멸 
+//		  String sql = "insert into review(user_id, prod_id, name, contents, score) values(?, ?, ?, ?, ?)";
+//		  Connection conn = null; 
+//		  ResultSet rs = null; 
+//		  PreparedStatement pstmt = null;
+// 
+//		  try {
+//				conn = DBManager.getConnection();
+//				pstmt = conn.prepareCall(sql);
+//				pstmt.setInt(1, review.getUser_id());
+//				pstmt.setInt(2, review.getProd_id());
+//				pstmt.setString(3, review.getName());
+//				pstmt.setString(4, review.getContents()); 
+//				pstmt.setString(5,review.getScore()); 
+//				pstmt.executeUpdate();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				DBManager.close(conn, pstmt, rs);
+//			}
+//	  } 
 //	  public void updateReview(ReviewDTO reviewDTO) { //DTO 전달받아 입력 프로시저 실행, DTO
 //	  전달 후 소멸 String sql; try { sql =
 //	  "{call review_package.review_update(?,?,?,?)}"; cstmt = con.prepareCall(sql);

@@ -10,7 +10,7 @@ public class ProductVO {
 	private int discount;       // 할인 
 	private String packageType; // 보관방법 
 	private String origin;      // 원산지
-	private String prodImg;     // ㄴ제품 이미지 경로
+	private String prodImg;     // 제품 이미지 경로
 	
 	public int getId() {
 		return id;

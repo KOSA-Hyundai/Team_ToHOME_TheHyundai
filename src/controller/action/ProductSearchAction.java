@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import dto.BigCategoryVO;
-import dto.CategoryVO;
 import dto.ProductVO;
 
 // 작성자 : 정예성

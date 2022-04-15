@@ -12,7 +12,7 @@ import dto.BigCategoryVO;
 import dto.CategoryVO;
 import dto.ProductVO;
 
-// 작성자 : 정예성
+// 작성자 : 정예성, 유지훈
 // 기능  : 메인 화면 카테고리, 상품 리스트 출력
 public class MainAction implements Action {
   @Override
@@ -40,7 +40,6 @@ public class MainAction implements Action {
 	  	// 각각의 배열 리스트를 HttpServletrequest에 세팅
 	    request.setAttribute("categoryList", cateogoryList);
 	    request.setAttribute("menuCategoryList", menuCateogoryList);
-	    System.out.println(cateogoryList);
 	    request.setAttribute("productList", productList);
 	    request.setAttribute("productList2", productList2);
 	    
