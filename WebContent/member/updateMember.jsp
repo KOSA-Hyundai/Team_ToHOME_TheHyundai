@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="../header.jsp" %>
+<!--
+작성자 : 고정민
+회원정보 변경을 처리하는 페이지
+
+비밀번호, 전화번호, 주소 중 하나 또는 그 이상을 변경할 수 있고
+어떠한 정보를 변경하든 기존 비밀번호는 무조건 입력해야하도록 구현
+ -->
 <title>마이페이지</title>
 <style>
     .conarea .col-input input + span {
