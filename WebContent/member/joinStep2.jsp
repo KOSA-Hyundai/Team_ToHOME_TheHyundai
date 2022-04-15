@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../header.jsp" %>
 <title>회원 가입>일반 회원가입</title>
+<!-- 
+작성자 : 고정민
+사용자의 회원가입을 다루는 페이지
+유효성 검사와 이메일 중복 체크를 처리
+ -->
 <style>
     .container {
         position: relative;

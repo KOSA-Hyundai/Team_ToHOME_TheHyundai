@@ -14,6 +14,9 @@ import java.util.Base64;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+// 작성자 : 고정민
+// 기능 : 세션에 담을 회원 정보에 비밀번호가 노출되어 있어 이를 암호화하기 위한 클래스
+// AES128로 암호화 
 public class AES128 {
     private final String ips;
     private final Key keySpec;

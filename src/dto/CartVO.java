@@ -1,11 +1,13 @@
 package dto;
 
+// 작성자 : 고정민
+// 장바구니 목록 조회 시 필요한 상품 정보와 수량을 담은 VO
 public class CartVO {
-	private int id;
-	private int prod_id;
-	private String email;
-	private int qty;
-	private String useyn;
+	private int id; // 장바구니 아이디 
+	private int prod_id; // 상품 아이디 
+	private String email; // 사용자 이메일 
+	private int qty; // 상품 수량
+	private String useyn; // 장바구니 활성화 여부 
 
 	public int getId() {
 		return id;

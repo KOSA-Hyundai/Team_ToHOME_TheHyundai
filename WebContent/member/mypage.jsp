@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../header.jsp" %>
+<!-- 
+작성자 : 고정민
+마이페이지 화면 구현
+ -->
 <title>마이페이지</title>
 <style>
     .point2 {
